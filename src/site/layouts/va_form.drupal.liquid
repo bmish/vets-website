@@ -130,7 +130,15 @@
             <ul class="usa-unstyled-list">
             {% for vaForm in fieldVaFormRelatedForms %}
               <li>
+                {% if vaForm.entity.entityPublished = true and vaForm.entity.entityUrl.routed = true %}
+                  <a
+                    href="https://va.gov{{ vaForm.entity.entityUrl.path }}"
+                    >
+                    <h3>VA Form {{ vaForm.entity.fieldVaFormNumber }}</h3>
+                  </a>
+                  {% else %}
                   <h3>VA Form {{ vaForm.entity.fieldVaFormNumber }}</h3>
+                  {% endif %}
                   <p class="vads-u-margin-top--0 vads-u-font-size--h4 vads-u-font-weight--bold">
                     <dfn class="vads-u-visibility--screen-reader">Form name:</dfn> {{ vaForm.entity.fieldVaFormName }}
                   </p>
