@@ -562,19 +562,6 @@ describe('VAOS Appointment transformer', () => {
       it('should set bestTimeToCall', () => {
         expect(data.preferredTimesForPhoneCall).to.deep.equal(['Morning']);
       });
-
-      it('should set isExpressCare to false', () => {
-        expect(data.vaos.isExpressCare).to.equal(false);
-      });
-
-      it('should set express care reasonForVisit and isExpressCare', () => {
-        const expressData = transformPendingAppointments([
-          { ...vaRequest, typeOfCareId: 'CR1', reasonForVisit: 'some reason' },
-        ])[0];
-
-        expect(expressData.reason).to.equal('some reason');
-        expect(expressData.vaos.isExpressCare).to.equal(true);
-      });
     });
 
     describe('isPastAppointment', () => {
@@ -817,10 +804,6 @@ describe('VAOS Appointment transformer', () => {
 
       it('should set isCommunityCare to true', () => {
         expect(data.vaos.isCommunityCare).to.be.true;
-      });
-
-      it('should set isExpressCare to false', () => {
-        expect(data.vaos.isExpressCare).to.be.false;
       });
     });
   });

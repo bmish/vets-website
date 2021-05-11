@@ -9,7 +9,6 @@ import {
 } from 'platform/testing/unit/helpers';
 import {
   getVAAppointmentMock,
-  getExpressCareRequestCriteriaMock,
   getRequestEligibilityCriteriaMock,
   getDirectBookingEligibilityCriteriaMock,
   getVAFacilityMock,
@@ -803,56 +802,6 @@ export function mockPreferences(emailAddress) {
       },
     },
   );
-}
-
-/**
- * Mock the api calls used to set up Express Care windows
- *
- * @export
- * @param {Object} [params]
- * @param {string} [params.facilityId=983] The facility id for the EC window
- * @param {boolean} [params.isWindowOpen=false] Is an EC window open currently for the given facility
- * @param {boolean} [params.isUnderRequestLimit=false] Is this user under the limit for EC requests
- * @param {MomentDate} [params.startTime=null] The start time for the window
- * @param {MomentDate} [params.endTime=null] The end time for the window
- */
-export function setupExpressCareMocks({
-  facilityId = '983',
-  isWindowOpen = false,
-  isUnderRequestLimit = false,
-  startTime = null,
-  endTime = null,
-} = {}) {
-  const today = moment();
-  const start =
-    startTime ||
-    today
-      .clone()
-      .subtract(5, 'minutes')
-      .tz('America/Denver');
-  const end =
-    endTime ||
-    today
-      .clone()
-      .add(isWindowOpen ? 3 : -3, 'minutes')
-      .tz('America/Denver');
-  const requestCriteria = getExpressCareRequestCriteriaMock(facilityId, [
-    {
-      day: today
-        .clone()
-        .tz('America/Denver')
-        .format('dddd')
-        .toUpperCase(),
-      canSchedule: true,
-      startTime: start.format('HH:mm'),
-      endTime: end.format('HH:mm'),
-    },
-  ]);
-  mockRequestEligibilityCriteria([facilityId], [requestCriteria]);
-  mockRequestLimits({
-    facilityIds: [facilityId],
-    numberOfRequests: isUnderRequestLimit ? 0 : 1,
-  });
 }
 
 /**

@@ -13,7 +13,6 @@
         "parentStationCode": "983A6",
         "requestSupported": true,
         "directSchedulingSupported": true,
-        "expressTimes": null,
         "institutionTimezone": "America/Denver"
       }
     }

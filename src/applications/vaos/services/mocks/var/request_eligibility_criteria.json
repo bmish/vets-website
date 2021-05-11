@@ -132,51 +132,6 @@
           }
         ],
         "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 2,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": true,
-            "schedulingDays": [
-              {
-                "day": "MONDAY",
-                "canSchedule": true,
-                "startTime": "07:16",
-                "endTime": "23:16"
-              },
-              {
-                "day": "TUESDAY",
-                "canSchedule": false
-              },
-              {
-                "day": "WEDNESDAY",
-                "canSchedule": true,
-                "startTime": "07:16",
-                "endTime": "23:16"
-              },
-              {
-                "day": "THURSDAY",
-                "canSchedule": true,
-                "startTime": "07:16",
-                "endTime": "23:16"
-              },
-              {
-                "day": "FRIDAY",
-                "canSchedule": true,
-                "startTime": "07:58",
-                "endTime": "23:59"
-              },
-              {
-                "day": "SATURDAY",
-                "canSchedule": false
-              },
-              {
-                "day": "SUNDAY",
-                "canSchedule": false
-              }
-            ]
-          },
           { "id": "CC", "supported": true }
         ]
       }
@@ -313,24 +268,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 2,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     },
     {
@@ -466,24 +404,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 2,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     },
     {
@@ -619,24 +540,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 2,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     },
     {
@@ -774,24 +678,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 2,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     },
     {
@@ -930,24 +817,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 2,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     },
     {
@@ -1083,27 +953,6 @@
           }
         ],
         "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 2,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": true,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              {
-                "day": "THURSDAY",
-                "canSchedule": true,
-                "startTime": "01:00",
-                "endTime": "03:00"
-              },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          },
           { "id": "CC", "supported": true }
         ]
       }
@@ -1241,24 +1090,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 0,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     },
     {
@@ -1394,24 +1226,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 2,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     },
     {
@@ -1536,24 +1351,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 0,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     },
     {
@@ -1678,24 +1476,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 0,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     },
     {
@@ -1833,24 +1614,7 @@
             "enterpriseSubmittedRequestLimit": 2
           }
         ],
-        "customRequestSettings": [
-          {
-            "id": "CR1",
-            "typeOfCare": "Express Care",
-            "submittedRequestLimit": 2,
-            "enterpriseSubmittedRequestLimit": 2,
-            "supported": false,
-            "schedulingDays": [
-              { "day": "MONDAY", "canSchedule": false },
-              { "day": "TUESDAY", "canSchedule": false },
-              { "day": "WEDNESDAY", "canSchedule": false },
-              { "day": "THURSDAY", "canSchedule": false },
-              { "day": "FRIDAY", "canSchedule": false },
-              { "day": "SATURDAY", "canSchedule": false },
-              { "day": "SUNDAY", "canSchedule": false }
-            ]
-          }
-        ]
+        "customRequestSettings": []
       }
     }
   ]

@@ -16,11 +16,7 @@ import slots from '../../services/mocks/var/slots.json';
 import requestEligibilityCriteria from '../../services/mocks/var/request_eligibility_criteria.json';
 import directEligibilityCriteria from '../../services/mocks/var/direct_booking_eligibility_criteria.json';
 
-import {
-  getVAAppointmentMock,
-  getExpressCareRequestCriteriaMock,
-  getParentSiteMock,
-} from '../mocks/v0';
+import { getVAAppointmentMock } from '../mocks/v0';
 
 const mockUser = {
   data: {
@@ -228,10 +224,6 @@ export function mockFeatureToggles({
           },
           {
             name: 'vaOnlineSchedulingPast',
-            value: true,
-          },
-          {
-            name: 'vaOnlineSchedulingExpressCareNew',
             value: true,
           },
           {
@@ -493,36 +485,6 @@ function mockVaccineSlots() {
 
 export function initAppointmentListMock() {
   setupSchedulingMocks();
-
-  const today = moment();
-  cy.route({
-    method: 'GET',
-    url: '/vaos/v0/request_eligibility_criteria*',
-    response: {
-      data: [
-        getExpressCareRequestCriteriaMock('983', [
-          {
-            day: today
-              .clone()
-              .tz('America/Denver')
-              .format('dddd')
-              .toUpperCase(),
-            canSchedule: true,
-            startTime: today
-              .clone()
-              .subtract('2', 'minutes')
-              .tz('America/Denver')
-              .format('HH:mm'),
-            endTime: today
-              .clone()
-              .add('2', 'minutes')
-              .tz('America/Denver')
-              .format('HH:mm'),
-          },
-        ]),
-      ],
-    },
-  }).as('getRequestEligibilityCriteria');
   cy.route({
     method: 'GET',
     url: '/vaos/v0/appointment_requests*',
@@ -574,48 +536,6 @@ export function initAppointmentListMock() {
           },
         },
       ],
-    },
-  });
-}
-
-export function initExpressCareMocks() {
-  initAppointmentListMock();
-  mockRequestLimits();
-
-  cy.route({
-    method: 'GET',
-    url: '/vaos/v0/facilities?facility_codes[]=983',
-    response: {
-      data: [
-        {
-          id: '983',
-          attributes: {
-            ...getParentSiteMock().attributes,
-            institutionCode: '983',
-            authoritativeName: 'Some VA facility',
-            rootStationCode: '983',
-            parentStationCode: '983',
-          },
-        },
-      ],
-    },
-  });
-
-  cy.route({
-    method: 'POST',
-    url: '/vaos/v0/appointment_requests?type=va',
-    response: {
-      data: {
-        id: 'testing',
-        attributes: {
-          typeOfCareId: 'CR1',
-          email: 'test@va.gov',
-          phoneNumber: '5555555555',
-          reasonForVisit: 'Cough',
-          additionalInformation: 'Whatever',
-          status: 'Submitted',
-        },
-      },
     },
   });
 }

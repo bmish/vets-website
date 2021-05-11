@@ -410,7 +410,6 @@ export function getFacilityMock() {
       parentStationCode: 'fake',
       requestSupported: false,
       directSchedulingSupported: false,
-      expressTimes: null,
       institutionTimezone: 'fake',
     },
   };
@@ -456,48 +455,6 @@ export function getAppointmentSlotMock() {
     bookingStatus: '1',
     remainingAllowedOverBookings: '3',
     availability: true,
-  };
-}
-
-/**
- * @summary
- *
- * VATS days settings for Express Care request
- *
- * @typedef {Object} SchedulingDay
- * @static
- * @property {string} day All caps day of week name
- * @property {boolean} canSchedule Can you schedule EC on this day
- * @property {string} startTime Start time in HH:MM format
- * @property {string} endTime End time in HH:MM format
- */
-
-/**
- * Returns a stubbed VATS request setting object for the Express Care type of care
- *
- * @export
- * @param {string} id Facility id
- * @param {Array<module:testing/mocks/data.SchedulingDay>} schedulingDays List of days with settings for each to determine if scheduling is allowed
- * @returns {VATSRequestCriteria} var-resources VATS request settings object
- */
-export function getExpressCareRequestCriteriaMock(id, schedulingDays) {
-  return {
-    id,
-    type: 'request_eligibility_criteria',
-    attributes: {
-      id,
-      requestSettings: [],
-      customRequestSettings: [
-        {
-          id: 'CR1',
-          typeOfCare: 'Express Care',
-          submittedRequestLimit: 2,
-          enterpriseSubmittedRequestLimit: 2,
-          supported: !!schedulingDays,
-          schedulingDays: schedulingDays || [],
-        },
-      ],
-    },
   };
 }
 

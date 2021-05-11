@@ -27,8 +27,6 @@ export const selectFeatureCommunityCare = state =>
   toggleValues(state).vaOnlineSchedulingCommunityCare;
 export const selectFeatureDirectScheduling = state =>
   toggleValues(state).vaOnlineSchedulingDirect;
-export const selectFeatureExpressCareNewRequest = state =>
-  toggleValues(state).vaOnlineSchedulingExpressCareNew;
 export const selectFeatureToggleLoading = state => toggleValues(state).loading;
 export const selectFeatureCovid19Vaccine = state =>
   toggleValues(state).vaOnlineSchedulingCheetah;

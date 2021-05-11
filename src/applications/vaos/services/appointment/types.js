@@ -14,7 +14,6 @@
  * @property {'Appointment'} resourceType Static resource type string
  * @property {string} id Mapped from appointment.id, request.id, or ccAppointment.id
  * @property {?string} created Mapped from request.createdDate, timezone is unclear
- * @property {?string} cancelationReason veteranMessage field mapped only for requests, used for Express Care only
  * @property {AppointmentStatus} status Status for an appointment, from first requested to completed
  * - Mapped from appointment.vdsAppointments[0].currentStatus or appointment.vvsAppointments[0].status.code for appointments.
  * - Mapped from request.status for requests
@@ -28,7 +27,6 @@
  * - Mapped from ccAppointment.appointmentTime for CC appointments
  * - Mapped from appointment.vvsAppointments[0].dateTime for video appointments
  * - Mapped from appointment.startDate for VistA appointments
- * - Mapped from request.date for Express Care requests
  * @property {number} minutesDuration=60 The duration of the appointment or requested appointment
  * - Mapped from appointment.vdsAppointments[0].appointmentLength for VistA appointments
  * - Mapped from appointment.vvsAppointments[0].duration for video appointments.
@@ -36,9 +34,7 @@
  * - Mapped from ccAppointment.instructionsToVeteran for community care appointments
  * - Mapped from appointment.vdsAppointments[0].bookingNotes for VistA appointments
  * - Mapped from appointment.vvsAppointments[0].instructionsTitle for video appointments,
- * - Mapped from request.additionalInformation, but that only has content for Express Care requests
  * @property {?string} reason The reason given by patient for an appointment
- * - Mapped from request.reasonForVisit for Express Care requests
  * - Mapped from request.purposeForVisit for regular requests
  * - Empty for other appointment types
  * @property {?Array<string>} preferredTimesForPhoneCall Array of best times to call (Morning, Afternoon, Eventing), mapped from request.bestTimetoCall
@@ -133,8 +129,6 @@
  * - booked: Used for all community care appointments and any non-cancelled VistA appointments
  * - cancelled: Mapped from cancelled for requests, or the set of cancelled statuses for appointments
  * - proposed: Mapped from the Submitted status for requests
- * - pending:  Mapped from the Escalated status on Express Care requests
- * - fulfilled: Mapped from the Resolved status for Express Care requests
  *
  * @typedef {'booked'|'cancelled'|'proposed'|'pending'|'fulfilled'} AppointmentStatus
  */
@@ -149,8 +143,7 @@
  * @property {boolean} isCommunityCare Set to true if request.appointmentType above is either ccRequest or ccAppointment
  * @property {?boolean} isPastAppointment Set to true if the appointment is in the past, undefined for requests
  * @property {?string} timeZone Mapped to request.timeZone for community care requests, null or undefined otherwise
- * @property {?boolean} isPhoneAppointment Mapped from appointment.phoneOnly field for VistA appointments, undefined otherwise
- * @property {?boolean} isExpressCare Set to true if request.typeOfCareId is CR1
+ * @property {?boolean} isPhoneAppointment Mapped from appointment.phoneOnly field for VistA appointments, undefined
  * @property {?boolean} isCOVIDVaccine Set to true if appointment is for a COVID vaccine, denoted by appt.char4 equaling CDQC
  * @property {boolean} isVideo Set to true for video appointments or requests. Will be true if request.visitType is set to
  *   video conference, or appointment.vvsAppointments has an item

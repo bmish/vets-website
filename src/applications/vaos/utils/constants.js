@@ -281,7 +281,6 @@ export const DISTANCES = [
 ];
 
 export const MENTAL_HEALTH = '502';
-export const EXPRESS_CARE = 'CR1';
 
 export const GA_PREFIX = 'vaos';
 

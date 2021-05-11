@@ -17,8 +17,6 @@ import requests from './var/requests.json';
 import messages0190 from './var/messages_0190.json';
 import messages0038 from './var/messages_0038.json';
 import parentFacilities from './var/facilities.json';
-import expressCareFacilities983 from './var/facilities_983_express_care.json';
-import expressCareFacilities984 from './var/facilities_984_express_care.json';
 import facilities983 from './var/facilities_983.json';
 import facilities984 from './var/facilities_984.json';
 import facilities983A6 from './var/facilities_983A6.json';
@@ -33,7 +31,7 @@ import varSlots from './var/slots.json';
 import cancelReasons from './var/cancel_reasons.json';
 import requestEligibilityCriteria from './var/request_eligibility_criteria.json';
 import directBookingEligibilityCriteria from './var/direct_booking_eligibility_criteria.json';
-import { EXPRESS_CARE, FREE_BUSY_TYPES } from '../../utils/constants';
+import { FREE_BUSY_TYPES } from '../../utils/constants';
 
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -171,13 +169,7 @@ export default [
   {
     path: /vaos\/v0\/systems\/.*\/direct_scheduling_facilities/,
     response: url => {
-      if (url.includes(EXPRESS_CARE)) {
-        if (url.includes('systems/983/')) {
-          return expressCareFacilities983;
-        } else {
-          return expressCareFacilities984;
-        }
-      } else if (url.endsWith('parent_code=984')) {
+      if (url.endsWith('parent_code=984')) {
         return facilities984;
       } else if (url.endsWith('parent_code=983A6')) {
         return facilities983A6;
@@ -342,23 +334,7 @@ export default [
   {
     method: 'POST',
     path: /vaos\/v0\/appointment_requests/,
-    response: (url, { requestData }) => {
-      if (requestData.typeOfCareId === EXPRESS_CARE) {
-        return {
-          data: {
-            id: 'testing',
-            attributes: {
-              email: requestData.email,
-              phoneNumber: requestData.phoneNumber,
-              typeOfCareId: requestData.typeOfCareId,
-              reasonForVisit: requestData.reasonForVisit,
-              additionalInformation: requestData.additionalInformation,
-              status: 'Submitted',
-            },
-          },
-        };
-      }
-
+    response: () => {
       return {
         data: {
           id: 'testing',

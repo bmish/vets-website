@@ -7,7 +7,6 @@ import {
   APPOINTMENT_STATUS,
   APPOINTMENT_TYPES,
   PURPOSE_TEXT,
-  EXPRESS_CARE,
   UNABLE_TO_REACH_VETERAN_DETCODE,
 } from '../../utils/constants';
 import { getTimezoneBySystemId } from '../../utils/timezone';
@@ -86,22 +85,9 @@ function getVistaStatus(appointment) {
  *  Maps FHIR appointment statuses to statuses from var-resources requests
  *
  * @param {Object} appointment A VAR request object
- * @param {Boolean} isExpressCare Whether or not the request is for express care
  * @returns {String} Appointment status
  */
-function getRequestStatus(request, isExpressCare) {
-  if (isExpressCare) {
-    if (request.status === 'Submitted') {
-      return APPOINTMENT_STATUS.proposed;
-    } else if (request.status === 'Cancelled') {
-      return APPOINTMENT_STATUS.cancelled;
-    } else if (request.status.startsWith('Escalated')) {
-      return APPOINTMENT_STATUS.pending;
-    }
-
-    return APPOINTMENT_STATUS.fulfilled;
-  }
-
+function getRequestStatus(request) {
   if (request.status === 'Booked' || request.status === 'Resolved') {
     return APPOINTMENT_STATUS.booked;
   } else if (request.status === 'Cancelled') {
@@ -207,10 +193,6 @@ function getPurposeOfVisit(appt) {
       return PURPOSE_TEXT.find(purpose => purpose.id === appt.purposeOfVisit)
         ?.short;
     case APPOINTMENT_TYPES.request:
-      if (appt.typeOfCareId === EXPRESS_CARE) {
-        return appt.reasonForVisit;
-      }
-
       return PURPOSE_TEXT.find(
         purpose => purpose.serviceName === appt.purposeOfVisit,
       )?.short;
@@ -465,7 +447,6 @@ export function transformConfirmedAppointments(appointments) {
  */
 export function transformPendingAppointment(appt) {
   const isCC = isCommunityCare(appt);
-  const isExpressCare = appt.typeOfCareId === EXPRESS_CARE;
   const requestedPeriod = getRequestedPeriods(appt);
   const unableToReachVeteran = appt.appointmentRequestDetailCode?.some(
     detail => detail.detailCode?.code === UNABLE_TO_REACH_VETERAN_DETCODE,
@@ -476,13 +457,13 @@ export function transformPendingAppointment(appt) {
   return {
     resourceType: 'Appointment',
     id: appt.id,
-    status: getRequestStatus(appt, isExpressCare),
+    status: getRequestStatus(appt),
     created,
     cancelationReason: unableToReachVeteran
       ? UNABLE_TO_REACH_VETERAN_DETCODE
       : null,
     requestedPeriod,
-    start: isExpressCare ? created : undefined,
+    start: undefined,
     minutesDuration: 60,
     type: {
       coding: [
@@ -505,7 +486,6 @@ export function transformPendingAppointment(appt) {
       isVideo,
       appointmentType: getAppointmentType(appt),
       isCommunityCare: isCC,
-      isExpressCare,
       apiData: appt,
     },
   };

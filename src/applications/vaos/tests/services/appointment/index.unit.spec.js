@@ -136,7 +136,6 @@ describe('VAOS Appointment service', () => {
             setRequestedPeriod(now.clone().add(-2, 'days'), 'AM'),
           ],
           vaos: {
-            isExpressCare: false,
             appointmentType: APPOINTMENT_TYPES.request,
           },
         },
@@ -147,7 +146,6 @@ describe('VAOS Appointment service', () => {
             setRequestedPeriod(now.clone().subtract(22, 'days'), 'AM'),
           ],
           vaos: {
-            isExpressCare: false,
             appointmentType: APPOINTMENT_TYPES.request,
           },
         },
@@ -158,7 +156,6 @@ describe('VAOS Appointment service', () => {
             setRequestedPeriod(now.clone().add(-2, 'days'), 'AM'),
           ],
           vaos: {
-            isExpressCare: false,
             appointmentType: APPOINTMENT_TYPES.request,
           },
         },
@@ -175,7 +172,6 @@ describe('VAOS Appointment service', () => {
             ),
           ],
           vaos: {
-            isExpressCare: false,
             appointmentType: APPOINTMENT_TYPES.request,
           },
         },
@@ -186,7 +182,6 @@ describe('VAOS Appointment service', () => {
             setRequestedPeriod(now.clone().add(2, 'days'), 'AM'),
           ],
           vaos: {
-            isExpressCare: false,
             appointmentType: APPOINTMENT_TYPES.request,
           },
         },
@@ -197,7 +192,6 @@ describe('VAOS Appointment service', () => {
             setRequestedPeriod(now.clone().add(3, 'days'), 'AM'),
           ],
           vaos: {
-            isExpressCare: false,
             appointmentType: APPOINTMENT_TYPES.request,
           },
         },
