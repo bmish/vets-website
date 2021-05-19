@@ -37,6 +37,7 @@ const IntroductionPage = props => {
       <h2 className="vads-u-font-size--h3">
         Follow these steps to request help with a VA debt payment
       </h2>
+
       <div className="process schemaform-process">
         <ol>
           <li className="process-step list-one">
@@ -45,6 +46,7 @@ const IntroductionPage = props => {
               You'll need this information for you (and your spouse if you’re
               married):
             </p>
+
             <ul>
               <li>
                 <strong>Work history for the past 2 years. </strong>
@@ -82,12 +84,14 @@ const IntroductionPage = props => {
                 you'll need any related documents.
               </li>
             </ul>
+
             <p>
               If you need help with your request,{' '}
               <a href="https://www.va.gov/vso/">
                 contact a local Veterans Service Organization (VSO).
               </a>
             </p>
+
             <AdditionalInfo
               status="info"
               triggerText="Why does VA need all this information?"
@@ -100,6 +104,7 @@ const IntroductionPage = props => {
               </span>
             </AdditionalInfo>
           </li>
+
           <li className="process-step list-two">
             <h3 className="vads-u-font-size--h4">Submit your request</h3>
             <p>
@@ -118,6 +123,7 @@ const IntroductionPage = props => {
               fees, interest, and other collection actions.
             </p>
           </li>
+
           <li className="process-step list-three">
             <h3 className="vads-u-font-size--h4">
               Take any needed next steps to resolve the debt
@@ -131,6 +137,7 @@ const IntroductionPage = props => {
             <p>If you need to make any payments, be sure to pay on time.</p>
           </li>
         </ol>
+
         <SaveInProgressIntro
           buttonOnly
           startText="Start your request now"
@@ -143,6 +150,7 @@ const IntroductionPage = props => {
           hideUnauthedStartLink
         />
       </div>
+
       <div className="omb-info--container">
         <OMBInfo resBurden={60} ombNumber="2900-0862" expDate="02/28/2022" />
       </div>

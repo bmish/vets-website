@@ -144,21 +144,21 @@ class SaveInProgressIntro extends React.Component {
     } else if (prefillEnabled && !verifyRequiredPrefill) {
       const { buttonOnly, retentionPeriod, unauthStartText } = this.props;
       const unauthStartButton = (
-        <button className="usa-button-primary" onClick={this.openLoginModal}>
+        <a className="vads-c-action-link--green" onClick={this.openLoginModal}>
           {unauthStartText || UNAUTH_SIGN_IN_DEFAULT_MESSAGE}
-        </button>
+        </a>
       );
       alert = buttonOnly ? (
         <>
           {unauthStartButton}
           {!this.props.hideUnauthedStartLink && (
             <p>
-              <button
-                className="va-button-link schemaform-start-button"
+              <a
+                className="vads-c-action-link--green"
                 onClick={this.goToBeginning}
               >
                 Start your {appType} without signing in
-              </button>
+              </a>
             </p>
           )}
         </>
@@ -192,12 +192,12 @@ class SaveInProgressIntro extends React.Component {
               {unauthStartButton}
               {!this.props.hideUnauthedStartLink && (
                 <p>
-                  <button
-                    className="va-button-link schemaform-start-button"
+                  <a
+                    className="vads-c-action-link--green"
                     onClick={this.goToBeginning}
                   >
                     Start your {appType} without signing in
-                  </button>
+                  </a>
                 </p>
               )}
             </div>
@@ -214,9 +214,12 @@ class SaveInProgressIntro extends React.Component {
               You can save this {appType} in progress, and come back later to
               finish filling it out.
               <br />
-              <button className="va-button-link" onClick={this.openLoginModal}>
+              <a
+                className="vads-c-action-link--green"
+                onClick={this.openLoginModal}
+              >
                 Sign in to your account.
-              </button>
+              </a>
             </div>
           </div>
           <br />
