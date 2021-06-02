@@ -3,6 +3,7 @@ import camelCaseKeysRecursive from 'camelcase-keys-recursive';
 import {
   SEARCH_STARTED,
   SEARCH_FAILED,
+  SEARCH_BY_FACILITY_CODES_SUCCEEDED,
   SEARCH_BY_LOCATION_SUCCEEDED,
   SEARCH_BY_NAME_SUCCEEDED,
   GEOCODE_SUCCEEDED,
@@ -11,44 +12,16 @@ import {
   UPDATE_CURRENT_SEARCH_TAB,
 } from '../actions';
 import { normalizedInstitutionAttributes } from '../../gi/reducers/utility';
+import { TABS } from '../constants';
 
 const INITIAL_STATE = {
-  results: [],
-  count: null,
-  version: {},
-  query: {
-    name: '',
-    location: '',
-    distance: '50',
-    latitude: null,
-    longitude: null,
-  },
-  pagination: {
-    currentPage: 1,
-    totalPages: 1,
-  },
-  inProgress: false,
   error: null,
-  facets: {
-    category: {},
-    type: {},
-    state: {},
-    country: [],
-    cautionFlag: {},
-    studentVetGroup: {},
-    yellowRibbonScholarship: {},
-    principlesOfExcellence: {},
-    eightKeysToVeteranSuccess: {},
-    stem: {},
-    provider: [],
-  },
+  geocode: null,
   geocodeInProgress: false,
   geolocationInProgress: false,
-  geocode: null,
+  inProgress: false,
   location: {
     count: null,
-    results: [],
-    version: {},
     facets: {
       category: {},
       type: {},
@@ -62,8 +35,41 @@ const INITIAL_STATE = {
       stem: {},
       provider: [],
     },
+    results: [],
   },
-  tab: 'name',
+  name: {
+    count: null,
+    facets: {
+      category: {},
+      type: {},
+      state: {},
+      country: [],
+      cautionFlag: {},
+      studentVetGroup: {},
+      yellowRibbonScholarship: {},
+      principlesOfExcellence: {},
+      eightKeysToVeteranSuccess: {},
+      stem: {},
+      provider: [],
+    },
+    pagination: {
+      currentPage: 1,
+      totalPages: 1,
+    },
+    results: [],
+  },
+  query: {
+    name: '',
+    location: '',
+    distance: '50',
+    latitude: null,
+    longitude: null,
+  },
+  compare: {
+    results: [],
+    count: null,
+  },
+  tab: TABS.name,
 };
 
 function uppercaseKeys(obj) {
@@ -107,7 +113,6 @@ function buildSearchResults(payload, paging = true) {
     pagination: paging ? derivePaging(camelPayload.links) : undefined,
     facets: normalizedInstitutionFacets(camelPayload.meta.facets),
     count: camelPayload.meta.count,
-    version: camelPayload.meta.version,
   };
 }
 
@@ -122,7 +127,7 @@ export default function(state = INITIAL_STATE, action) {
     case SEARCH_BY_LOCATION_SUCCEEDED:
       return {
         ...state,
-        location: { ...buildSearchResults(action.payload, false) },
+        location: buildSearchResults(action.payload, false),
         inProgress: false,
         error: null,
       };
@@ -130,7 +135,7 @@ export default function(state = INITIAL_STATE, action) {
     case SEARCH_BY_NAME_SUCCEEDED:
       return {
         ...state,
-        ...buildSearchResults(action.payload),
+        name: buildSearchResults(action.payload),
         inProgress: false,
         error: null,
       };
@@ -138,7 +143,13 @@ export default function(state = INITIAL_STATE, action) {
     case SEARCH_STARTED:
       return {
         ...state,
-        query: { ...state.query, ...action.payload },
+        query: {
+          ...state.query,
+          name: action.payload.name,
+          location: action.payload.location,
+          latitude: action.payload.latitude,
+          longitude: action.payload.longitude,
+        },
         inProgress: true,
       };
 
@@ -165,6 +176,14 @@ export default function(state = INITIAL_STATE, action) {
         error: action.payload,
         geocodeInProgress: false,
         geolocationInProgress: false,
+      };
+
+    case SEARCH_BY_FACILITY_CODES_SUCCEEDED:
+      return {
+        ...state,
+        compare: buildSearchResults(action.payload, false),
+        inProgress: false,
+        error: null,
       };
 
     default:
