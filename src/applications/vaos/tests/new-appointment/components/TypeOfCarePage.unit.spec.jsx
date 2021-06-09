@@ -5,11 +5,7 @@ import { fireEvent, waitFor } from '@testing-library/dom';
 import { cleanup } from '@testing-library/react';
 
 import set from 'platform/utilities/data/set';
-import {
-  mockFetch,
-  resetFetch,
-  setFetchJSONResponse,
-} from 'platform/testing/unit/helpers';
+import { mockFetch, setFetchJSONResponse } from 'platform/testing/unit/helpers';
 
 import { getParentSiteMock } from '../../mocks/v0';
 import { createTestStore, renderWithStoreAndRouter } from '../../mocks/setup';
@@ -41,7 +37,6 @@ const initialState = {
 
 describe('VAOS <TypeOfCarePage>', () => {
   beforeEach(() => mockFetch());
-  afterEach(() => resetFetch());
   it('should show type of care page with all care types', async () => {
     const store = createTestStore(initialState);
     const screen = renderWithStoreAndRouter(
@@ -78,6 +73,7 @@ describe('VAOS <TypeOfCarePage>', () => {
         /To use some of the tool’s features, you need a home address on file/i,
       ),
     ).to.not.exist;
+    expect(screen.queryByLabelText(/COVID-19 vaccine/i)).to.not.exist;
 
     fireEvent.click(screen.getByText(/Continue/));
 
@@ -358,5 +354,26 @@ describe('VAOS <TypeOfCarePage>', () => {
         name: /You may have trouble using the VA appointments tool right now/,
       }),
     ).to.exist;
+  });
+
+  it('should include vaccine type of care when flag is on', async () => {
+    const store = createTestStore({
+      ...initialState,
+      featureToggles: {
+        vaOnlineSchedulingCommunityCare: true,
+        vaOnlineSchedulingCheetah: true,
+      },
+    });
+    const screen = renderWithStoreAndRouter(<TypeOfCarePage />, { store });
+
+    expect((await screen.findAllByRole('radio')).length).to.equal(12);
+    fireEvent.click(await screen.findByLabelText(/COVID-19 vaccine/i));
+
+    fireEvent.click(screen.getByText(/Continue/));
+    await waitFor(() =>
+      expect(screen.history.push.lastCall.args[0]).to.equal(
+        '/new-covid-19-vaccine-appointment',
+      ),
+    );
   });
 });

@@ -13,9 +13,6 @@ function fillOutForm(facilitySelection) {
   cy.get('.va-modal-body button').click();
   cy.findAllByRole('tab').should('exist');
 
-  // Select primary care appointment type
-  cy.get('#schedule-new-appointment-0').click();
-
   // Start flow
   cy.findByText('Start scheduling').click();
 
@@ -104,6 +101,7 @@ function fillOutForm(facilitySelection) {
     .click();
   cy.findByText('Follow-up/Routine');
   cy.findByText('cough');
+  cy.axeCheckBestPractice();
 }
 
 describe('VAOS request flow', () => {

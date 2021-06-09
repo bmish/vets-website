@@ -95,19 +95,24 @@ const Dashboard = ({
   isLOA3,
   showLoader,
   showMPIConnectionError,
+  showNameTag,
   showNotInMPIError,
   ...props
 }) => {
   const downtimeApproachingRenderMethod = useDowntimeApproachingRenderMethod();
 
-  // focus on the header when we are done loading
+  // focus on the name tag or the header when we are done loading
   useEffect(
     () => {
       if (!showLoader) {
-        focusElement('#dashboard-title');
+        if (showNameTag) {
+          focusElement('#name-tag');
+        } else {
+          focusElement('#dashboard-title');
+        }
       }
     },
-    [showLoader],
+    [showLoader, showNameTag],
   );
 
   // fetch data when we determine they are LOA3
@@ -145,23 +150,23 @@ const Dashboard = ({
         {showLoader && <RequiredLoginLoader />}
         {!showLoader && (
           <div className="dashboard">
-            {props.showNameTag && (
-              <NameTag
-                showUpdatedNameTag
-                totalDisabilityRating={props.totalDisabilityRating}
-                totalDisabilityRatingServerError={
-                  props.totalDisabilityRatingServerError
-                }
-              />
+            {showNameTag && (
+              <div id="name-tag">
+                <NameTag
+                  showUpdatedNameTag
+                  totalDisabilityRating={props.totalDisabilityRating}
+                  totalDisabilityRatingServerError={
+                    props.totalDisabilityRatingServerError
+                  }
+                />
+              </div>
             )}
-            <div className="vads-l-grid-container vads-u-padding-bottom--3 medium-screen:vads-u-padding-x--2 medium-screen:vads-u-padding-bottom--4">
+            <div className="vads-l-grid-container vads-u-padding-x--1 vads-u-padding-bottom--3 medium-screen:vads-u-padding-x--2 medium-screen:vads-u-padding-bottom--4">
               <Breadcrumbs className="vads-u-padding-x--0 vads-u-padding-y--1p5 medium-screen:vads-u-padding-y--0">
                 <a href="/" key="home">
                   Home
                 </a>
-                <span className="vads-u-color--black" key="dashboard">
-                  <strong>My VA</strong>
-                </span>
+                <a href="/my-va">My VA</a>
               </Breadcrumbs>
 
               <DashboardHeader />
