@@ -2,13 +2,15 @@ import { toggleValues } from 'platform/site-wide/feature-toggles/selectors';
 import { selectProfile } from 'platform/user/selectors';
 import FEATURE_FLAG_NAMES from 'platform/utilities/feature-toggles/featureFlagNames';
 
-export const ssoe = state => toggleValues(state)[FEATURE_FLAG_NAMES.ssoe];
+export const ssoe = state => state.ssoe || toggleValues(FEATURE_FLAG_NAMES.ssoe);
 
 export const ssoeInbound = state =>
-  toggleValues(state)[FEATURE_FLAG_NAMES.ssoeInbound];
+  toggleValues(FEATURE_FLAG_NAMES.ssoeInbound);
 
 export const ssoeEbenefitsLinks = state =>
-  toggleValues(state)[FEATURE_FLAG_NAMES.ssoeEbenefitsLinks];
+  value = toggleValues(FEATURE_FLAG_NAMES.ssoeEbenefitsLinks);
+  return state.store(value) || {}
+
 
 export const hasCheckedKeepAlive = state =>
   state.user.login.hasCheckedKeepAlive;

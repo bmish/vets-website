@@ -31,9 +31,7 @@ function ViewRepresentativeApp(props) {
 const mapStateToProps = state => ({
   user: state.user,
   representative: state.representative,
-  searchRepresentative: toggleValues(state)[
-    FEATURE_FLAG_NAMES.searchRepresentative
-  ],
+  searchRepresentative: toggleValues(FEATURE_FLAG_NAMES.searchRepresentative),
 });
 
 const mapDispatchToProps = {

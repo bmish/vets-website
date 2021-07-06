@@ -482,9 +482,7 @@ class SearchApp extends React.Component {
 
 const mapStateToProps = state => ({
   search: state.search,
-  searchTypeaheadEnabled: toggleValues(state)[
-    FEATURE_FLAG_NAMES.searchTypeaheadEnabled
-  ],
+  searchTypeaheadEnabled: toggleValues(FEATURE_FLAG_NAMES.searchTypeaheadEnabled),
 });
 
 const mapDispatchToProps = {

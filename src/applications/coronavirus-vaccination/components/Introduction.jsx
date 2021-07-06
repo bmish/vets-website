@@ -214,12 +214,8 @@ function Introduction({
 const mapStateToProps = state => {
   return {
     isLoggedIn: userSelectors.isLoggedIn(state),
-    authButtonDisabled: toggleValues(state)[
-      FEATURE_FLAG_NAMES.covidVaccineUpdatesDisableAuth
-    ],
-    enhancedEligibilityEnabled: toggleValues(state)[
-      FEATURE_FLAG_NAMES.covidVaccineUpdatesEnableExpandedEligibility
-    ],
+    authButtonDisabled: toggleValues(FEATURE_FLAG_NAMES.covidVaccineUpdatesDisableAuth),
+    enhancedEligibilityEnabled: toggleValues(FEATURE_FLAG_NAMES.covidVaccineUpdatesEnableExpandedEligibility),
   };
 };
 

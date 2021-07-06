@@ -56,9 +56,7 @@ const mapStateToProps = state => ({
   isPending: state.debtLetters.isPending,
   isProfileUpdating: state.debtLetters.isProfileUpdating,
   isPendingVBMS: state.debtLetters.isPendingVBMS,
-  showDebtLetters: toggleValues(state)[
-    FEATURE_FLAG_NAMES.debtLettersShowLetters
-  ],
+  showDebtLetters: toggleValues(FEATURE_FLAG_NAMES.debtLettersShowLetters),
 });
 
 const mapDispatchToProps = dispatch => ({

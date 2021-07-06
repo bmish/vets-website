@@ -266,9 +266,7 @@ function mapStateToProps(state) {
   const canAccessClaims = profileState.services.includes(
     backendServices.EVSS_CLAIMS,
   );
-  const stemAutomatedDecision = toggleValues(state)[
-    FEATURE_FLAG_NAMES.stemAutomatedDecision
-  ];
+  const stemAutomatedDecision = toggleValues(FEATURE_FLAG_NAMES.stemAutomatedDecision);
 
   const stemClaims = stemAutomatedDecision ? claimsV2Root.stemClaims : [];
 

@@ -994,10 +994,10 @@ export const showSeparationLocation = formData => {
     : false;
 };
 
-export const show526Wizard = state => toggleValues(state).show526Wizard;
+export const show526Wizard = state => toggleValues(FEATURE_FLAG_NAMES.show526Wizard);
 
 export const showSubform8940And4192 = state =>
-  toggleValues(state)[FEATURE_FLAG_NAMES.subform89404192];
+  toggleValues(FEATURE_FLAG_NAMES.subform89404192);
 
 export const wrapWithBreadcrumb = (title, component) => (
   <>

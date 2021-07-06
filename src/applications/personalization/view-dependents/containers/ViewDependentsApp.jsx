@@ -49,15 +49,9 @@ const mapStateToProps = state => ({
   user: state.user,
   loading: state.allDependents.loading,
   error: state.allDependents.error,
-  dependentsToggle: toggleValues(state)[
-    FEATURE_FLAG_NAMES.vaViewDependentsAccess
-  ],
-  manageDependentsToggle: toggleValues(state)[
-    FEATURE_FLAG_NAMES.manageDependents
-  ],
-  dependencyVerificationToggle: toggleValues(state)[
-    FEATURE_FLAG_NAMES.dependencyVerification
-  ],
+  dependentsToggle: toggleValues(FEATURE_FLAG_NAMES.vaViewDependentsAccess),
+  manageDependentsToggle: toggleValues(FEATURE_FLAG_NAMES.manageDependents),
+  dependencyVerificationToggle: toggleValues(FEATURE_FLAG_NAMES.dependencyVerification),
   onAwardDependents: state.allDependents.onAwardDependents,
   notOnAwardDependents: state.allDependents.notOnAwardDependents,
   updateDiariesStatus: state.verifyDependents.updateDiariesStatus,

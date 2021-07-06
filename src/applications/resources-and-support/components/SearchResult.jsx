@@ -74,9 +74,7 @@ SearchResult.propTypes = {
 };
 
 const mapStateToProps = store => ({
-  searchTypeaheadEnabled: toggleValues(store)[
-    FEATURE_FLAG_NAMES.searchTypeaheadEnabled
-  ],
+  searchTypeaheadEnabled: toggleValues(FEATURE_FLAG_NAMES.searchTypeaheadEnabled),
 });
 
 export default connect(

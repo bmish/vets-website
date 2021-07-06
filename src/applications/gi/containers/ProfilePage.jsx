@@ -118,12 +118,8 @@ const mapStateToProps = state => {
     profile,
     calculator,
     eligibility,
-    gibctEybBottomSheet: toggleValues(state)[
-      FEATURE_FLAG_NAMES.gibctEybBottomSheet
-    ],
-    gibctSchoolRatings: toggleValues(state)[
-      FEATURE_FLAG_NAMES.gibctSchoolRatings
-    ],
+    gibctEybBottomSheet: toggleValues(FEATURE_FLAG_NAMES.gibctEybBottomSheet),
+    gibctSchoolRatings: toggleValues(FEATURE_FLAG_NAMES.gibctSchoolRatings),
   };
 };
 

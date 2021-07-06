@@ -2,5 +2,5 @@ import FEATURE_FLAG_NAMES from 'platform/utilities/feature-toggles/featureFlagNa
 import { toggleValues } from 'platform/site-wide/feature-toggles/selectors';
 
 export const mcpFeatureToggle = state => {
-  return toggleValues(state)[FEATURE_FLAG_NAMES.showMedicalCopays];
+  return toggleValues(FEATURE_FLAG_NAMES.showMedicalCopays);
 };

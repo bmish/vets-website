@@ -5,4 +5,4 @@ import FEATURE_FLAG_NAMES from 'platform/utilities/feature-toggles/featureFlagNa
 export const getYellowRibbonAppState = state => state.yellowRibbonReducer;
 
 export const selectShowYellowRibbonEnhancements = state =>
-  toggleValues(state)[FEATURE_FLAG_NAMES.yellowRibbonEnhancements];
+  toggleValues(FEATURE_FLAG_NAMES.yellowRibbonEnhancements);

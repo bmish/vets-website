@@ -42,7 +42,8 @@ const App = ({ loading, location, children }) => {
 };
 
 const mapStateToProps = state => ({
-  loading: toggleValues(state).loading,
+  loading: false,
+  // loading: toggleValues(state).loading,
 });
 
 App.propTypes = {

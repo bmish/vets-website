@@ -443,7 +443,7 @@ FileField.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  requestLockedPdfPassword: toggleValues(state).request_locked_pdf_password,
+  requestLockedPdfPassword: toggleValues(FEATURE_FLAG_NAMES.request_locked_pdf_password),
 });
 
 export { FileField };

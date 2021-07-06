@@ -214,7 +214,7 @@ const SharableLink = ({
 };
 
 const mapStateToProps = store => ({
-  showSharableLink: toggleValues(store)[FEATURE_FLAG_NAMES.sharableLinks],
+  showSharableLink: toggleValues(FEATURE_FLAG_NAMES.sharableLinks),
 });
 
 export default connect(mapStateToProps)(SharableLink);

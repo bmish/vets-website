@@ -21,6 +21,8 @@ class Footer extends React.Component {
   }
   componentDidMount() {
     // TODO: debounce
+    toggleValues(state, FEATURE_FLAG_NAMES.languageSupport)
+
     window.addEventListener(
       'resize',
       () => {
@@ -85,7 +87,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  showLangSupport: toggleValues(state)[FEATURE_FLAG_NAMES.languageSupport],
+  showLangSupport: state.languageSupport,
   languageCode: state.i18State.lang,
 });
 

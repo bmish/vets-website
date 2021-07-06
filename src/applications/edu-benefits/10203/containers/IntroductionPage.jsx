@@ -250,7 +250,7 @@ const mapStateToProps = state => {
   return {
     isLoggedIn: state.user.login.currentlyLoggedIn,
     remainingEntitlement: state.post911GIBStatus.remainingEntitlement,
-    useEvss: toggleValues(state)[FEATURE_FLAG_NAMES.stemSCOEmail],
+    useEvss: toggleValues(FEATURE_FLAG_NAMES.stemSCOEmail),
   };
 };
 

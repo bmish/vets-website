@@ -29,9 +29,7 @@ const ViewDependentsCTA = props => {
 
 const mapStateToProps = store => ({
   user: store.user,
-  includedInFlipper: toggleValues(store)[
-    FEATURE_FLAG_NAMES.vaViewDependentsAccess
-  ],
+  includedInFlipper: toggleValues(FEATURE_FLAG_NAMES.vaViewDependentsAccess),
 });
 
 export default connect(mapStateToProps)(ViewDependentsCTA);

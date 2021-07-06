@@ -34,9 +34,7 @@ function Layout({ formIsEnabled, isProfileLoading, children }) {
 const mapStateToProps = state => {
   return {
     isProfileLoading: userSelectors.isProfileLoading(state),
-    formIsEnabled: toggleValues(state)[
-      FEATURE_FLAG_NAMES.covidVaccineUpdatesForm
-    ],
+    formIsEnabled: toggleValues(FEATURE_FLAG_NAMES.covidVaccineUpdatesForm),
   };
 };
 

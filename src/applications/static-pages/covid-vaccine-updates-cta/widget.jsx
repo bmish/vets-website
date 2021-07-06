@@ -70,9 +70,7 @@ function CovidVaccineUpdatesCTA({ lang, showLinkToOnlineForm }) {
 }
 
 const mapStateToProps = store => ({
-  showLinkToOnlineForm: toggleValues(store)[
-    FEATURE_FLAG_NAMES.covidVaccineUpdatesCTA
-  ],
+  showLinkToOnlineForm: toggleValues(FEATURE_FLAG_NAMES.covidVaccineUpdatesCTA),
 });
 
 export default connect(mapStateToProps)(CovidVaccineUpdatesCTA);

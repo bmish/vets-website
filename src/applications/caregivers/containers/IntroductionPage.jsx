@@ -279,9 +279,7 @@ export const IntroductionPage = ({
 
 const mapStateToProps = state => ({
   formData: state.form.data,
-  canUpload1010cgPOA: toggleValues(state)[
-    FEATURE_FLAG_NAMES.canUpload1010cgPOA
-  ],
+  canUpload1010cgPOA: toggleValues(FEATURE_FLAG_NAMES.canUpload1010cgPOA),
 });
 
 const mapDispatchToProps = {

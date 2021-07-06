@@ -23,7 +23,7 @@ const COEAccess = props => {
 };
 
 const mapStateToProps = store => ({
-  includedInFlipper: toggleValues(store)[FEATURE_FLAG_NAMES.coeAccess],
+  includedInFlipper: toggleValues(FEATURE_FLAG_NAMES.coeAccess),
 });
 
 export default connect(mapStateToProps)(COEAccess);

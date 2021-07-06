@@ -11,8 +11,8 @@ const userSelector = state => state.user;
 const preSubmitInfoSelector = formConfig => formConfig?.preSubmitInfo;
 
 const reviewPageFlipperSelector = createSelector(
-  toggleValues,
-  state => state?.formsReviewPage,
+  // TODO
+  toggleValues(FEATURE_FLAG_NAMES.formsReviewPage),
 );
 
 const preSubmitSelector = createSelector(

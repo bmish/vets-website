@@ -164,9 +164,7 @@ class IntroductionPage extends React.Component {
 
 const mapStateToProps = state => {
   const { form, user, vaFileNumber } = state;
-  const dependentsToggle = toggleValues(state)[
-    FEATURE_FLAG_NAMES.vaViewDependentsAccess
-  ];
+  const dependentsToggle = toggleValues(FEATURE_FLAG_NAMES.vaViewDependentsAccess);
   return {
     dependentsToggle,
     form,

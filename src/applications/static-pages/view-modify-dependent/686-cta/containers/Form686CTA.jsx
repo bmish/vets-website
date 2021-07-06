@@ -28,7 +28,7 @@ const Form686CTA = props => {
 
 const mapStateToProps = store => ({
   user: store.user,
-  showContent: toggleValues(store)[FEATURE_FLAG_NAMES.vaViewDependentsAccess],
+  showContent: toggleValues(FEATURE_FLAG_NAMES.vaViewDependentsAccess),
 });
 
 export default connect(mapStateToProps)(Form686CTA);

@@ -292,9 +292,7 @@ const mapStateToProps = state => ({
   filters: state.filters,
   search: state.search,
   eligibility: state.eligibility,
-  gibctSchoolRatings: toggleValues(state)[
-    FEATURE_FLAG_NAMES.gibctSchoolRatings
-  ],
+  gibctSchoolRatings: toggleValues(FEATURE_FLAG_NAMES.gibctSchoolRatings),
 });
 
 const mapDispatchToProps = {
