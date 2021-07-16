@@ -173,13 +173,13 @@ export class SignInModal extends React.Component {
                     alt="ID.me"
                     src={`${vaGovFullDomain}/img/signin/lock-icon.svg`}
                   />{' '}
-                  Secured & powered by{' '}
-                  <img
+                  Simple. Reliable. Secure.
+                  {/* <img
                     aria-hidden="true"
                     role="presentation"
                     alt="ID.me"
                     src={`${vaGovFullDomain}/img/signin/idme-icon-dark.svg`}
-                  />
+                  /> */}
                 </div>
               </div>
               <div className="signin-actions">
@@ -187,6 +187,19 @@ export class SignInModal extends React.Component {
                   Sign in with an existing account
                 </h2>
                 <div>
+                  <button
+                    disabled={globalDowntime}
+                    className="login-gov"
+                    onClick={this.loginHandler('login')}
+                  >
+                    <img
+                      aria-hidden="true"
+                      role="presentation"
+                      alt="Login.gov"
+                      src={`${vaGovFullDomain}/img/signin/login-gov-logo-rev.svg`}
+                    />
+                    <strong> Sign in with Login.gov</strong>
+                  </button>
                   <button
                     disabled={globalDowntime}
                     className="dslogon"
@@ -225,19 +238,6 @@ export class SignInModal extends React.Component {
                       src={`${vaGovFullDomain}/img/signin/idme-icon-white.svg`}
                     />
                     <strong> Sign in with ID.me</strong>
-                  </button>
-                  <button
-                    disabled={globalDowntime}
-                    className="usa-button-primary va-button-primary"
-                    onClick={this.loginHandler('login')}
-                  >
-                    <img
-                      aria-hidden="true"
-                      role="presentation"
-                      alt="Login.gov"
-                      src={`${vaGovFullDomain}/img/signin/idme-icon-white.svg`}
-                    />
-                    <strong> Sign in with LOGIN.GOV</strong>
                   </button>
                   <span className="sidelines">OR</span>
                   <div className="alternate-signin">
@@ -287,7 +287,7 @@ export class SignInModal extends React.Component {
                 </li>
                 <li>...and more</li>
               </ul>
-              <h3 className="vads-u-font-size--base vads-u-margin-top--2">
+              {/* <h3 className="vads-u-font-size--base vads-u-margin-top--2">
                 A secure account powered by ID.me
               </h3>
               <p className="vads-u-margin-top--0">
@@ -296,15 +296,15 @@ export class SignInModal extends React.Component {
                 protection and help us make sure you're you—and not someone
                 pretending to be you—before we give you access to your
                 information.
-              </p>
-              <p>
+              </p> */}
+              {/* <p>
                 <a
                   href="/resources/privacy-and-security-on-vagov/#whats-idme-and-why-should-i-tr"
                   target="_blank"
                 >
                   Learn more about ID.me
                 </a>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

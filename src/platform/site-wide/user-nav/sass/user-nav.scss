@@ -92,6 +92,14 @@ span.sidelines {
       }
     }
 
+    &.login-gov {
+      background: #bd5727 !important;
+      
+      &:hover {
+        background: #A94D23 !important;
+      }
+    }
+
     &.idme-create {
       box-shadow: inset 0 0 0 2px $color-green;
       color: $color-green;

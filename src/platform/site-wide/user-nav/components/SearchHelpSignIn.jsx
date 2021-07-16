@@ -73,7 +73,7 @@ class SearchHelpSignIn extends Component {
           href="https://localhost:3000/v1/sessions/login_ial2/new"
           onClick={() => recordEvent({ event: 'nav-jumplink-click' })}
         >
-          Verify Your identity with login.gov
+          Verify your identity with Login.gov
         </a>
         <SearchMenu
           clickHandler={this.handleSearchMenuClick}

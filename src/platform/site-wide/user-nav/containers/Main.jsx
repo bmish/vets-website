@@ -146,7 +146,10 @@ export class Main extends React.Component {
 
   render() {
     return (
-      <div className="profile-nav-container">
+      <div
+        className="profile-nav-container"
+        style={{ justifyContent: 'flex-end' }}
+      >
         <SearchHelpSignIn
           isLOA3={this.props.isLOA3}
           isLoggedIn={this.props.currentlyLoggedIn}

@@ -86,6 +86,19 @@ export class VerifyApp extends React.Component {
                   This one-time process will take{' '}
                   <strong>5 - 10 minutes</strong> to complete.
                 </p>
+                <a
+                  className="login-gov"
+                  href="https://localhost:3000/v1/sessions/login_ial2/new"
+                  onClick={() => recordEvent({ event: 'nav-jumplink-click' })}
+                >
+                  <img
+                    aria-hidden="true"
+                    role="presentation"
+                    alt="Login.gov"
+                    src={`/img/signin/login-gov-logo-rev.svg`}
+                  />
+                  <strong> Verify with Login.gov</strong>
+                </a>
                 <button
                   className="usa-button-primary va-button-primary"
                   onClick={() => verify(authVersion)}
