@@ -28,7 +28,7 @@ export function sessionTypeUrl(type = '', version = 'v0', queryParams = {}) {
   const base =
     version === 'v1'
       ? `${environment.API_URL}/v1/sessions`
-      : `${environment.API_URL}/sessions`;
+      : `${environment.API_URL}/v1/sessions`;
 
   const searchParams = new URLSearchParams(queryParams);
 

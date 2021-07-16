@@ -226,6 +226,19 @@ export class SignInModal extends React.Component {
                     />
                     <strong> Sign in with ID.me</strong>
                   </button>
+                  <button
+                    disabled={globalDowntime}
+                    className="usa-button-primary va-button-primary"
+                    onClick={this.loginHandler('login')}
+                  >
+                    <img
+                      aria-hidden="true"
+                      role="presentation"
+                      alt="Login.gov"
+                      src={`${vaGovFullDomain}/img/signin/idme-icon-white.svg`}
+                    />
+                    <strong> Sign in with LOGIN.GOV</strong>
+                  </button>
                   <span className="sidelines">OR</span>
                   <div className="alternate-signin">
                     <h2 className="vads-u-font-size--sm vads-u-margin-top--0">
