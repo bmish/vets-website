@@ -241,6 +241,11 @@ async function generateHtmlFiles(buildPath) {
     .map(generateHtmlFile);
 }
 
+const reportProgress = (percentage, message, ...args) => {
+  // e.g. Output each progress message directly to the console:
+  console.info(percentage, message, ...args);
+};
+
 module.exports = async (env = {}) => {
   const { buildtype = LOCALHOST } = env;
   const buildOptions = {
@@ -417,6 +422,8 @@ module.exports = async (env = {}) => {
       }),
 
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+      new webpack.ProgressPlugin(reportProgress),
 
       new WebpackBar(),
     ],
