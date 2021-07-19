@@ -152,8 +152,17 @@ class IntroductionPage extends React.Component {
       showMainLoader,
       showVerificationRequiredAlert,
     } = this.props;
+
+    /* eslint-disable no-console */
+    const closeHandler = () => console.log('closing');
+    const fooHandler = () => console.log('foo');
+    /* eslint-enable no-console */
     return (
       <div className="schemaform-intro">
+        <va-alert onFoo={fooHandler} onClose={closeHandler} closeable>
+          Foo
+        </va-alert>
+        <br />
         <FormTitle title="Apply for health care benefits" />
         <p>Equal to VA Form 10-10EZ (Application for Health Benefits).</p>
         {showMainLoader && <LoadingIndicator />}
