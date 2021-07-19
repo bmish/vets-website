@@ -334,13 +334,10 @@ jobs:
       #       node_modules
       #     key: ${{ steps.get-node-version.outputs.NODE_VERSION }}-${{ hashFiles('yarn.lock') }}
 
-      - name: Clean up node modules
-        run: rm -rf node_modules
-
       - name: Install dependencies
         run: yarn install --frozen-lockfile --prefer-offline
-        # env:
-        #   YARN_CACHE_FOLDER: ~/.cache/yarn
+        env:
+          YARN_CACHE_FOLDER: ~/.cache/yarn
 
       - name: Set port for server
         run: echo "SERVER_PORT=$(( ( RANDOM % 2000 ) + 3001 ))" >> $GITHUB_ENV
