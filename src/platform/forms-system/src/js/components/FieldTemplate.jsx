@@ -47,7 +47,11 @@ export default function FieldTemplate(props) {
   let errorSpanId;
   let errorSpan;
   let errorClass;
-  if (hasErrors) {
+
+  if (
+    hasErrors &&
+    !(uiSchema && uiSchema['ui:options'] && uiSchema['ui:options'].hideErrors)
+  ) {
     errorClass = `usa-input-error ${isDateField ? 'input-error-date' : ''}`;
     errorSpanId = `${id}-error-message`;
     errorSpan = (
@@ -72,10 +76,13 @@ export default function FieldTemplate(props) {
   });
 
   const noWrapperContent =
-    !showFieldLabel &&
-    (schema.type === 'object' ||
-      schema.type === 'array' ||
-      (schema.type === 'boolean' && !uiSchema['ui:widget']));
+    (!showFieldLabel &&
+      (schema.type === 'object' ||
+        schema.type === 'array' ||
+        (schema.type === 'boolean' && !uiSchema['ui:widget']))) ||
+    (uiSchema &&
+      uiSchema['ui:options'] &&
+      uiSchema['ui:options'].noWrapperContent);
 
   if (noWrapperContent) {
     return children;

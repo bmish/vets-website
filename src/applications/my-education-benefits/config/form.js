@@ -11,9 +11,10 @@ import commonDefinitions from 'vets-json-schema/dist/definitions.json';
 import GetFormHelp from '../components/GetFormHelp';
 import FormFooter from 'platform/forms/components/FormFooter';
 import fullNameUI from 'platform/forms-system/src/js/definitions/fullName';
-import ssnUI from 'platform/forms-system/src/js/definitions/ssn';
+// import ssnUI from 'platform/forms-system/src/js/definitions/ssn';
 import bankAccountUI from 'platform/forms-system/src/js/definitions/bankAccount';
 import phoneUI from 'platform/forms-system/src/js/definitions/phone';
+import currentOrPastDateUI from 'platform/forms-system/src/js/definitions/currentOrPastDate';
 import * as address from 'platform/forms-system/src/js/definitions/address';
 
 // import fullSchema from 'vets-json-schema/dist/22-1990-schema.json';
@@ -29,10 +30,15 @@ import ConfirmationPage from '../containers/ConfirmationPage';
 
 import { directDepositWarning } from '../helpers';
 import toursOfDutyUI from '../definitions/toursOfDuty';
+import ReviewBoxField from 'platform/forms-system/src/js/components/ReviewBoxField';
+import FullNameViewField from '../components/FullNameViewField';
+import DateViewField from '../components/DateViewField';
+import CustomReviewDOBField from '../containers/CustomReviewDOBField';
+import { isValidCurrentOrPastDate } from 'platform/forms-system/src/js/utilities/validations';
 
 const {
   fullName,
-  ssn,
+  // ssn,
   date,
   dateRange,
   usaPhone,
@@ -43,6 +49,7 @@ const {
 // Define all the fields in the form to aid reuse
 const formFields = {
   fullName: 'fullName',
+  dateOfBirth: 'dateOfBirth',
   ssn: 'ssn',
   toursOfDuty: 'toursOfDuty',
   viewNoDirectDeposit: 'view:noDirectDeposit',
@@ -93,10 +100,11 @@ const formConfig = {
     noAuth:
       'Please sign in again to continue your application for my education benefits.',
   },
-  title: 'Complex Form',
+  title: 'Apply for VA education benefits',
+  subTitle: 'Form 22-1990',
   defaultDefinitions: {
     fullName,
-    ssn,
+    // ssn,
     date,
     dateRange,
     usaPhone,
@@ -108,19 +116,70 @@ const formConfig = {
       title: 'Applicant Information',
       pages: {
         [formPages.applicantInformation]: {
-          path: 'applicant-information',
+          path: 'applicant/information',
           title: 'Applicant Information',
+          subTitle:
+            'Please review your personal information and edit it if anything is incorrect.',
           uiSchema: {
-            [formFields.fullName]: fullNameUI,
-            [formFields.ssn]: ssnUI,
+            [formFields.fullName]: Object.assign({}, fullNameUI, {
+              first: Object.assign({}, fullNameUI.first, {
+                'ui:title': 'Your first name',
+              }),
+              last: Object.assign({}, fullNameUI.last, {
+                'ui:title': 'Your last name',
+              }),
+              middle: Object.assign({}, fullNameUI.middle, {
+                'ui:title': 'Your middle name',
+              }),
+              'ui:title': 'Your full name',
+              'ui:field': ReviewBoxField,
+              'ui:options': {
+                hideLabelText: true,
+                showFieldLabel: false,
+                viewComponent: FullNameViewField,
+              },
+            }),
+            [formFields.dateOfBirth]: {
+              ...currentOrPastDateUI('Date of birth'),
+              'ui:field': ReviewBoxField,
+              'ui:options': {
+                hideLabelText: true,
+                hideErrors: true,
+                noWrapperContent: true,
+                showFieldLabel: false,
+                startInEdit: formData => {
+                  if (!formData) {
+                    return true;
+                  }
+
+                  const dateParts = formData.split('-');
+                  return !isValidCurrentOrPastDate(
+                    dateParts[2],
+                    dateParts[1],
+                    dateParts[0],
+                  );
+                },
+                viewComponent: DateViewField,
+              },
+              'ui:reviewField': CustomReviewDOBField,
+            },
           },
           schema: {
             type: 'object',
-            required: [formFields.fullName],
+            required: [formFields.fullName, formFields.dateOfBirth],
             properties: {
               [formFields.fullName]: fullName,
-              [formFields.ssn]: ssn,
+              [formFields.dateOfBirth]: date,
             },
+          },
+          initialData: {
+            fullName: {
+              first: 'Hector',
+              middle: 'Oliver',
+              last: 'Stanley',
+              suffix: 'Jr.',
+            },
+            dateOfBirth: '1992-07-23',
           },
         },
       },
