@@ -68,13 +68,6 @@ class SearchHelpSignIn extends Component {
   render() {
     return (
       <div className="vads-u-display--flex vads-u-align-items--center vads-u-padding-top--1">
-        <a
-          className="vads-u-color--white vads-u-text-decoration--none vads-u-padding-x--1 vads-u-font-weight--bold"
-          href="https://localhost:3000/v1/sessions/login_ial2/new"
-          onClick={() => recordEvent({ event: 'nav-jumplink-click' })}
-        >
-          Verify your identity with Login.gov
-        </a>
         <SearchMenu
           clickHandler={this.handleSearchMenuClick}
           isOpen={this.props.isMenuOpen.search}

@@ -23,14 +23,32 @@ const IdentityNotVerified = ({
       <p>
         <strong>This one-time process takes about 5-10 minutes.</strong>
       </p>
-
+      <a
+        className="login-gov"
+        href="https://localhost:3000/v1/sessions/login_ial2/new"
+        onClick={() => recordEvent({ event: 'nav-jumplink-click' })}
+      >
+        <img
+          aria-hidden="true"
+          role="presentation"
+          alt="Login.gov"
+          src="/img/signin/login-gov-logo-rev.svg"
+        />
+        <strong> Verify your identity</strong>
+      </a>
       <a
         className="usa-button-primary va-button-primary"
         href="/verify"
         onClick={() => recordEvent({ event: 'verify-link-clicked' })}
       >
-        <img alt="ID.me" src="/img/signin/idme-icon-white.svg" />
-        <strong>Verify your identity</strong>
+        <img
+          aria-hidden="true"
+          role="presentation"
+          style={{ height: '1em' }}
+          alt="ID.me"
+          src="/img/signin/idme-icon-white.svg"
+        />
+        <strong> Verify your identity</strong>
       </a>
     </>
   );

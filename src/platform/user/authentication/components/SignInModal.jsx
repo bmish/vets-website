@@ -154,157 +154,90 @@ export class SignInModal extends React.Component {
             <h1>Sign in to VA.gov</h1>
           </div>
         </div>
-        <div className="row medium-screen:vads-u-display--none mobile-explanation">
-          <div className="columns small-12">
-            <h2>
-              One site. A lifetime of benefits and services at your fingertips.
-            </h2>
-          </div>
-        </div>
         {this.renderDowntimeBanners()}
-        <div>
-          <div className="usa-width-one-half">
-            <div className="signin-actions-container">
-              <div className="top-banner">
-                <div>
+        <div className="row">
+          <div className="columns small-12">
+            <h2
+              className="vads-u-font-size--sm vads-u-margin-top--0"
+              style={{ textAlign: 'center' }}
+            >
+              Sign in with an existing account
+            </h2>
+            <div style={{ margin: '0 auto' }}>
+              <button
+                disabled={globalDowntime}
+                className="login-gov"
+                onClick={this.loginHandler('login')}
+              >
+                <img
+                  aria-hidden="true"
+                  role="presentation"
+                  alt="Login.gov"
+                  src={`${vaGovFullDomain}/img/signin/login-gov-logo-rev.svg`}
+                />
+                {/* <strong> Sign in with Login.gov</strong> */}
+              </button>
+              <button
+                disabled={globalDowntime}
+                className="dslogon"
+                onClick={this.loginHandler('dslogon')}
+              >
+                <img
+                  aria-hidden="true"
+                  role="presentation"
+                  alt="DS Logon"
+                  src={`${vaGovFullDomain}/img/signin/dslogon-icon.svg`}
+                />
+                <strong> DS Logon</strong>
+              </button>
+              <button
+                disabled={globalDowntime}
+                className="mhv"
+                onClick={this.loginHandler('mhv')}
+              >
+                <img
+                  aria-hidden="true"
+                  role="presentation"
+                  alt="My HealtheVet"
+                  src={`${vaGovFullDomain}/img/signin/mhv-icon.svg`}
+                />
+                <strong> My HealtheVet</strong>
+              </button>
+              <button
+                disabled={globalDowntime}
+                className="usa-button-primary va-button-primary"
+                onClick={this.loginHandler('idme')}
+              >
+                <img
+                  aria-hidden="true"
+                  role="presentation"
+                  alt="ID.me"
+                  src={`${vaGovFullDomain}/img/signin/idme-icon-white.svg`}
+                />
+                {/* <strong> Sign in with ID.me</strong> */}
+              </button>
+              <span className="sidelines">OR</span>
+              <div className="alternate-signin">
+                <h2
+                  className="vads-u-font-size--sm vads-u-margin-top--0"
+                  style={{ textAlign: 'center' }}
+                >
+                  Don't have those accounts?
+                </h2>
+                <button
+                  disabled={globalDowntime}
+                  className="idme-create usa-button usa-button-secondary"
+                  onClick={this.signupHandler}
+                >
                   <img
                     aria-hidden="true"
                     role="presentation"
                     alt="ID.me"
-                    src={`${vaGovFullDomain}/img/signin/lock-icon.svg`}
-                  />{' '}
-                  Simple. Reliable. Secure.
-                  {/* <img
-                    aria-hidden="true"
-                    role="presentation"
-                    alt="ID.me"
                     src={`${vaGovFullDomain}/img/signin/idme-icon-dark.svg`}
-                  /> */}
-                </div>
+                  />
+                  <strong> Create an ID.me account</strong>
+                </button>
               </div>
-              <div className="signin-actions">
-                <h2 className="vads-u-font-size--sm vads-u-margin-top--0">
-                  Sign in with an existing account
-                </h2>
-                <div>
-                  <button
-                    disabled={globalDowntime}
-                    className="login-gov"
-                    onClick={this.loginHandler('login')}
-                  >
-                    <img
-                      aria-hidden="true"
-                      role="presentation"
-                      alt="Login.gov"
-                      src={`${vaGovFullDomain}/img/signin/login-gov-logo-rev.svg`}
-                    />
-                    <strong> Sign in with Login.gov</strong>
-                  </button>
-                  <button
-                    disabled={globalDowntime}
-                    className="dslogon"
-                    onClick={this.loginHandler('dslogon')}
-                  >
-                    <img
-                      aria-hidden="true"
-                      role="presentation"
-                      alt="DS Logon"
-                      src={`${vaGovFullDomain}/img/signin/dslogon-icon.svg`}
-                    />
-                    <strong> Sign in with DS Logon</strong>
-                  </button>
-                  <button
-                    disabled={globalDowntime}
-                    className="mhv"
-                    onClick={this.loginHandler('mhv')}
-                  >
-                    <img
-                      aria-hidden="true"
-                      role="presentation"
-                      alt="My HealtheVet"
-                      src={`${vaGovFullDomain}/img/signin/mhv-icon.svg`}
-                    />
-                    <strong> Sign in with My HealtheVet</strong>
-                  </button>
-                  <button
-                    disabled={globalDowntime}
-                    className="usa-button-primary va-button-primary"
-                    onClick={this.loginHandler('idme')}
-                  >
-                    <img
-                      aria-hidden="true"
-                      role="presentation"
-                      alt="ID.me"
-                      src={`${vaGovFullDomain}/img/signin/idme-icon-white.svg`}
-                    />
-                    <strong> Sign in with ID.me</strong>
-                  </button>
-                  <span className="sidelines">OR</span>
-                  <div className="alternate-signin">
-                    <h2 className="vads-u-font-size--sm vads-u-margin-top--0">
-                      Don't have those accounts?
-                    </h2>
-                    <button
-                      disabled={globalDowntime}
-                      className="idme-create usa-button usa-button-secondary"
-                      onClick={this.signupHandler}
-                    >
-                      <img
-                        aria-hidden="true"
-                        role="presentation"
-                        alt="ID.me"
-                        src={`${vaGovFullDomain}/img/signin/idme-icon-dark.svg`}
-                      />
-                      <strong> Create an ID.me account</strong>
-                    </button>
-                    <p>Use your email, Google, or Facebook</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="usa-width-one-half">
-            <div className="explanation-content">
-              <div className="vads-u-display--none medium-screen:vads-u-display--block">
-                <h2 className="usa-font-lead vads-u-margin-top--0">
-                  One site. A lifetime of benefits and services at your
-                  fingertips.
-                </h2>
-              </div>
-              <p>
-                You spoke. We listened. VA.gov is the direct result of what you
-                said you wanted most—one easy-to-use place to:
-              </p>
-              <ul>
-                <li>Check your disability claim and appeal status</li>
-                <li>
-                  Find out how much money you have left to pay for school or
-                  training
-                </li>
-                <li>
-                  Refill your prescriptions and communicate with your health
-                  care team
-                </li>
-                <li>...and more</li>
-              </ul>
-              {/* <h3 className="vads-u-font-size--base vads-u-margin-top--2">
-                A secure account powered by ID.me
-              </h3>
-              <p className="vads-u-margin-top--0">
-                ID.me is our trusted technology partner in helping to keep your
-                personal information safe. They specialize in digital identity
-                protection and help us make sure you're you—and not someone
-                pretending to be you—before we give you access to your
-                information.
-              </p> */}
-              {/* <p>
-                <a
-                  href="/resources/privacy-and-security-on-vagov/#whats-idme-and-why-should-i-tr"
-                  target="_blank"
-                >
-                  Learn more about ID.me
-                </a>
-              </p> */}
             </div>
           </div>
         </div>
