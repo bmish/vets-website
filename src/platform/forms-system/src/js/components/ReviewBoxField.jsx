@@ -8,7 +8,12 @@ import {
 } from '@department-of-veterans-affairs/react-jsonschema-form/lib/utils';
 
 import recordEvent from 'platform/monitoring/record-event';
-import { errorSchemaIsValid } from 'platform/forms-system/src/js/validation';
+import {
+  errorSchemaIsValid,
+  validateCurrentOrPastDate,
+} from 'platform/forms-system/src/js/validation';
+
+import classNames from 'classnames';
 
 import set from 'platform/utilities/data/set';
 import get from 'platform/utilities/data/get';
@@ -31,6 +36,10 @@ export default class ReviewBoxField extends React.Component {
     disabled: false,
     readonly: false,
   };
+
+  static requiredSpan;
+  static errorSpan;
+  static errorClass = '';
 
   constructor(props) {
     super(props);
@@ -64,17 +73,17 @@ export default class ReviewBoxField extends React.Component {
     );
 
     /*
-        const isTouched =
-          props.formContext.touched[props.id] ||
-          Object.keys(props.formContext.touched).some(touched =>
-            props.id.startsWith(touched),
-          );
-        const hasErrors =
-          (props.formContext.submitted || isTouched) &&
-          props.rawErrors &&
-          props.rawErrors.length;
-        window.console.log(`hasErrors ${hasErrors}`);
-        */
+    const isTouched =
+      props.formContext.touched[props.id] ||
+      Object.keys(props.formContext.touched).some(touched =>
+        props.id.startsWith(touched),
+      );
+    const hasErrors =
+      (props.formContext.submitted || isTouched) &&
+      props.rawErrors &&
+      props.rawErrors.length;
+    window.console.log(`hasErrors ${hasErrors}`);
+    */
 
     // There are times when the data isn't invalid, but we want to start in edit mode anyhow
     let shouldStartInEdit = startInEditConfigOption;
@@ -89,6 +98,12 @@ export default class ReviewBoxField extends React.Component {
       canCancel: !editing, // If we start in the edit state, we can't cancel
       oldData: props.formData,
     };
+
+    if (props.required && this.props.uiSchema['ui:widget'] === 'date') {
+      this.requiredSpan = (
+        <span className="schemaform-required-span">(*Required)</span>
+      );
+    }
   }
 
   onPropertyChange(name) {
@@ -109,6 +124,17 @@ export default class ReviewBoxField extends React.Component {
     return typeof uiSchema['ui:title'] === 'function'
       ? uiSchema['ui:title'](formData)
       : uiSchema['ui:title'];
+  };
+
+  getMainTitle = () => {
+    const isDateWidget = this.props.uiSchema['ui:widget'] === 'date';
+    const title = this.getTitle();
+
+    if (!isDateWidget) {
+      return title;
+    }
+
+    return `Your ${title.toLowerCase()}`;
   };
 
   getSubtitle = () => {
@@ -211,12 +237,34 @@ export default class ReviewBoxField extends React.Component {
 
     const ReviewBoxTitle = formContext.onReviewPage ? 'h4' : 'h5';
 
+    const hasErrors = this.formHasErrors();
+    const labelClassNames = classNames({
+      'usa-input-error-label': hasErrors,
+      'schemaform-label': true,
+    });
+
+    const isDateWidget = this.props.uiSchema['ui:widget'] === 'date';
+    if (isDateWidget) {
+      this.updateDateErrors(hasErrors);
+    }
+
     return (
       <div className="review-box">
         <div className="review-box_body input-section va-growable-background">
-          <ReviewBoxTitle className="review-box_title">{title}</ReviewBoxTitle>
-          {subtitle && <div className="review-box_subtitle">{subtitle}</div>}
-          {needsDlWrapper ? <dl className="review">{Field}</dl> : Field}
+          <ReviewBoxTitle className="review-box_title">
+            {this.getMainTitle()}
+          </ReviewBoxTitle>
+
+          <fieldset className={`review-box_fieldset ${this.errorClass}`}>
+            <label className={labelClassNames}>
+              {isDateWidget && title}
+              {this.requiredSpan}
+            </label>
+            {subtitle}
+            {this.errorSpan}
+            {needsDlWrapper ? <dl className="review">{Field}</dl> : Field}
+          </fieldset>
+
           <div className="vads-u-display--flex vads-u-flex-direction--row vads-u-margin-top--2p5">
             {!formContext.reviewMode && (
               <>
@@ -273,7 +321,7 @@ export default class ReviewBoxField extends React.Component {
     return (
       <div className="review-box review-box--view">
         <dl className="review-box_group">
-          <dt className="review-box_label">{this.getTitle()}</dt>
+          <dt className="review-box_label">{this.getMainTitle()}</dt>
           <dd className="review-box_value">
             <ViewComponent formData={this.props.formData} />
           </dd>
@@ -362,11 +410,12 @@ export default class ReviewBoxField extends React.Component {
     }
 
     // manually call the validation functions
-    const startInEditErrors = this.props.uiSchema['ui:options']?.startInEdit(
-      this.props.formData,
-    );
+    const hasErrors = this.formHasErrors();
+    if (this.props.uiSchema['ui:widget'] === 'date') {
+      this.updateDateErrors(hasErrors);
+    }
 
-    if (startInEditErrors || !errorSchemaIsValid(this.props.errorSchema)) {
+    if (hasErrors || !errorSchemaIsValid(this.props.errorSchema)) {
       // Show validation errors
       this.props.formContext.onError();
     } else {
@@ -394,6 +443,50 @@ export default class ReviewBoxField extends React.Component {
       </>
     );
   }
+
+  formHasErrors() {
+    const startInEditFunction =
+      typeof this.props.uiSchema['ui:options']?.startInEdit === 'function';
+
+    if (!startInEditFunction) {
+      return this.props.uiSchema['ui:options']?.startInEdit;
+    } else {
+      return this.props.uiSchema['ui:options']?.startInEdit(
+        this.props.formData,
+      );
+    }
+  }
+
+  updateDateErrors = dateErrors => {
+    if (!dateErrors) {
+      this.errorSpan = null;
+      this.errorClass = '';
+      return;
+    }
+
+    const errors = {
+      __errors: [],
+      addError(error) {
+        this.__errors.push(error);
+      },
+    };
+    let errorMessages;
+    validateCurrentOrPastDate(
+      errors,
+      this.props.formData,
+      null,
+      null,
+      errorMessages,
+    );
+
+    this.errorClass = 'usa-input-error';
+    const errorSpanId = `${this.props.idSchema.$id}-error-message`;
+    this.errorSpan = (
+      <span id={errorSpanId} className="usa-input-error-message" role="alert">
+        <span className="sr-only">Error</span> {errors.__errors[0]}
+      </span>
+    );
+  };
 }
 
 ReviewBoxField.propTypes = {

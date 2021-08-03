@@ -42,6 +42,7 @@ export default function FormNav(props) {
 
   let current;
   let chapterName;
+  let subTitle;
   if (page) {
     current = chapters.indexOf(page.chapterKey) + 1;
     // The review page is always part of our forms, but isn’t listed in chapter list
@@ -49,6 +50,9 @@ export default function FormNav(props) {
       page.chapterKey === 'review'
         ? formConfig?.customText?.reviewPageTitle || REVIEW_APP_DEFAULT_MESSAGE
         : formConfig.chapters[page.chapterKey].title;
+    if (page.chapterKey !== 'review' && page.subTitle) {
+      subTitle = page.subTitle;
+    }
     if (typeof chapterName === 'function') {
       chapterName = chapterName();
     }
@@ -97,6 +101,7 @@ export default function FormNav(props) {
           {!showHeader && (
             <div className="vads-u-font-size--h4">{stepText}</div>
           )}
+          {subTitle && <div className="vads-u-font-size--h4">{subTitle}</div>}
         </div>
       </div>
     </div>
