@@ -1,0 +1,50 @@
+
+ [
+
+   {
+        "firstName": "John", 
+        "middleName": "Franco",
+        "lastName": "Zola", 
+        "prefix": "Jr.", 
+        "dateOfBirth":{
+            "day": 12, 
+            "month": "August", 
+            "year": 1992
+    
+        },
+        "contactInfo":{
+            "phone": 5406373627,
+            "email": "HStanley@gmail.com", 
+            "address": {
+                "street": "Kulas Light",
+                "suite": "Apt. 556",
+                "city": "Gwenborough",
+                "zipcode": "92998-3874"
+            }
+        }
+
+    }, 
+    {
+        "firstName": "--", 
+        "middleName": "///",
+        "lastName": "@@@", 
+        "prefix": "III", 
+        "dateOfBirth":{
+            "day": 22, 
+            "month": "August", 
+            "year": 1990
+    
+        },
+        "contactInfo":{
+            "phone": 1111111111,
+            "email": "", 
+            "address": {
+                "street": "John Wise",
+                "suite": "Apt. 556",
+                "city": "Fairfax",
+                "zipcode": "00998-3874"
+            }
+        }
+
+    }
+]
