@@ -128,3 +128,44 @@ export const setLangAttributes = lang => {
   adaptSidebarWithLangCode();
   setMedalliaSurveyLangOnWindow(lang);
 };
+
+// -------------------------
+// DB based data functions
+// -------------------------
+
+// take an array of pages with nested fieldTranslatedPages array and
+// flatten them all into a single array of objects
+// assuming the fieldLanguage is set on every page
+const flattenTranslatedPages = pages => {
+  return pages.reduce((accumulator, page) => {
+    const parentPage = {
+      entityUrl: page?.entity?.entityUrl,
+      fieldLanguage: page?.entity?.fieldLanguage,
+    };
+
+    const nestedPages = page.entity?.fieldTranslatedPages?.map(nestedPage => {
+      return {
+        entityUrl: nestedPage?.entity?.entityUrl,
+        fieldLanguage: nestedPage?.entity?.fieldLanguage,
+      };
+    });
+
+    return [...accumulator, ...[parentPage], ...nestedPages];
+  }, []);
+};
+
+// flatten an array of nested translated pages and
+// return a list of languages available incl the url to that language
+export const buildLanguageListWithUrls = pages => {
+  const flattenedPageData = flattenTranslatedPages(pages);
+
+  return ALL_LANGUAGES.map(languageConfig => {
+    const foundPage = flattenedPageData.find(page => {
+      return page.fieldLanguage === languageConfig.code;
+    });
+
+    return foundPage
+      ? { ...languageConfig, url: foundPage.entityUrl.path }
+      : null;
+  }).filter(item => item !== null);
+};

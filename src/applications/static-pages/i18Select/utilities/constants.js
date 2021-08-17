@@ -42,6 +42,15 @@ export const TRANSLATED_LANGUAGES = [
     },
     onThisPage: 'Sa pahinang ito',
   },
+  {
+    label: '中国人',
+    code: 'zh',
+    urlPatterns: {
+      included: ['chinese'],
+      suffixed: ['-zh', '-zh/'],
+    },
+    onThisPage: '在本页',
+  },
 ];
 
 export const ALL_LANGUAGES = [DEFAULT_LANGUAGE, ...TRANSLATED_LANGUAGES];

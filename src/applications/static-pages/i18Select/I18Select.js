@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import recordEvent from 'platform/monitoring/record-event';
 import { setOnThisPageText } from './utilities/helpers';
 import { connect } from 'react-redux';
-import { ALL_LANGUAGES } from './utilities/constants';
 
-const I18Select = ({ baseUrls, languageCode }) => {
+const I18Select = ({ languageList, languageCode, currentUrl }) => {
   useEffect(
     () => {
       setOnThisPageText(languageCode);
@@ -15,31 +14,28 @@ const I18Select = ({ baseUrls, languageCode }) => {
   return (
     <div className="vads-u-display--inline-block vads-u-margin-top--4 vads-u-margin-bottom--3 vads-u-border--0 vads-u-border-bottom--1px vads-u-border-style--solid vads-u-border-color--gray">
       <span>
-        {ALL_LANGUAGES.map((languageConfig, i) => {
-          if (!baseUrls[languageConfig.code]) {
-            return null;
-          }
+        {languageList.map((languageConfig, i) => {
           return (
             <span key={i}>
               <a
                 className={`vads-u-font-size--base vads-u-font-family--sans vads-u-padding-bottom-0p5 ${
-                  languageConfig.code === languageCode
+                  languageConfig.url === currentUrl
                     ? 'vads-u-font-weight--bold vads-u-color--base vads-u-text-decoration--none'
                     : ''
                 }`}
                 onClick={_ => {
                   recordEvent({
                     event: 'nav-pipe-delimited-list-click',
-                    'pipe-delimited-list-header': languageConfig.lang,
+                    'pipe-delimited-list-header': languageConfig.code,
                   });
                 }}
-                href={baseUrls[languageConfig.code]}
+                href={languageConfig.url}
                 hrefLang={languageConfig.code}
                 lang={languageConfig.code}
               >
                 {languageConfig.label}{' '}
               </a>
-              {i !== ALL_LANGUAGES.length - 1 && (
+              {i !== languageList.length - 1 && (
                 <span
                   className=" vads-u-margin-left--0p5 vads-u-margin-right--0p5 vads-u-color--gray
                     vads-u-height--20"
