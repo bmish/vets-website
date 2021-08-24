@@ -1,0 +1,6 @@
+{
+  "appName": "i18n",
+  "entryFile": "./app-entry.jsx",
+  "entryName": "i18n",
+  "rootUrl": "/i18n"
+}
