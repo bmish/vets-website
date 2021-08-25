@@ -388,9 +388,17 @@ const formConfig = {
             'view:isSrROTCCommissionedDescription': {
               'ui:description': (
                 <>
-                  <AdditionalInfo triggerText="What does this mean?">
-                    <p>Test Message</p>
-                  </AdditionalInfo>
+                  <div className="form-field-footer-additional-info">
+                    <AdditionalInfo triggerText="What is a Senior ROTC?">
+                      <p>
+                        The Senior Reserve Officer Training Corps (SROTC) - more
+                        commonly referred to as the Reserve Officer Traing Corps
+                        (ROTC), is an officer training and scholarship program
+                        for postsecondary students authorized under Chapter 103
+                        of Title 10 of the United States Code.
+                      </p>
+                    </AdditionalInfo>
+                  </div>
                 </>
               ),
             },
@@ -402,9 +410,17 @@ const formConfig = {
             'view:hasDoDLoanPaymentPeriodDescription': {
               'ui:description': (
                 <>
-                  <AdditionalInfo triggerText="Why do I have to give up a benefit?">
-                    <p>Test Message</p>
-                  </AdditionalInfo>
+                  <div className="form-field-footer-additional-info">
+                    <AdditionalInfo triggerText="What does this mean?">
+                      <p>
+                        This is a Loan Repayment Program, which is a special
+                        incentive that certain military branches offer to
+                        qualified applicants. Under a Loan Repayment Program,
+                        the branch of service will repay part of an applicant’s
+                        qualifying student loans.
+                      </p>
+                    </AdditionalInfo>
+                  </div>
                 </>
               ),
             },
@@ -412,9 +428,9 @@ const formConfig = {
           schema: {
             type: 'object',
             required: [
-              'formFields.militaryCommissionReceived',
-              'formFields.isSrROTCCommissioned',
-              'formFields.hasDoDLoanPaymentPeriod',
+              formFields.militaryCommissionReceived,
+              formFields.isSrROTCCommissioned,
+              formFields.hasDoDLoanPaymentPeriod,
             ],
             properties: {
               [formFields.militaryCommissionReceived]: {
