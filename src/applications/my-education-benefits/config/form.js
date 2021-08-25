@@ -72,12 +72,16 @@ const formFields = {
   mobilePhoneNumber: 'mobilePhoneNumber',
   benefitSelection: 'benefitSelection',
   incorrectServiceHistoryExplanation: 'incorrectServiceHistoryExplanation',
+  militaryCommissionReceived: 'militaryCommissionReceived',
+  isSrROTCCommissioned: 'srROTCCommissioned',
+  hasDoDLoanPaymentPeriod: 'hasDoDLoanPaymentPeriod',
 };
 
 // Define all the form pages to help ensure uniqueness across all form chapters
 const formPages = {
   applicantInformation: 'applicantInformation',
-  // serviceHistory: 'serviceHistory',
+  serviceHistory: 'serviceHistory',
+  additionalConsiderations: 'additionalConsiderations',
   contactInformation: 'contactInformation',
   directDeposit: 'directDeposit',
   benefitSelect: 'benefitSelect',
@@ -360,6 +364,80 @@ const formConfig = {
                 // serviceStatus: 'Active Duty',
               },
             ],
+          },
+        },
+      },
+    },
+    additionalConsiderationsChapter: {
+      title: 'Additional Considerations',
+      pages: {
+        [formPages.additionalConsiderations]: {
+          path: 'additional-considerations',
+          title: 'Additional Considerations',
+          uiSchema: {
+            'ui:title': 'Enter your service obligations',
+            [formFields.militaryCommissionReceived]: {
+              'ui:title':
+                'Did you receive a commission from a federally-sponsored U.S. military service?',
+              'ui:widget': 'yesNo',
+            },
+            [formFields.isSrROTCCommissioned]: {
+              'ui:title': 'Were you commissioned as a result of Senior ROTC?',
+              'ui:widget': 'yesNo',
+            },
+            'view:isSrROTCCommissionedDescription': {
+              'ui:description': (
+                <>
+                  <AdditionalInfo triggerText="What does this mean?">
+                    <p>Test Message</p>
+                  </AdditionalInfo>
+                </>
+              ),
+            },
+            [formFields.hasDoDLoanPaymentPeriod]: {
+              'ui:title':
+                'Do you have a period of service that the Department of Defense counts towards an education loan payment?',
+              'ui:widget': 'yesNo',
+            },
+            'view:hasDoDLoanPaymentPeriodDescription': {
+              'ui:description': (
+                <>
+                  <AdditionalInfo triggerText="Why do I have to give up a benefit?">
+                    <p>Test Message</p>
+                  </AdditionalInfo>
+                </>
+              ),
+            },
+          },
+          schema: {
+            type: 'object',
+            required: [
+              'formFields.militaryCommissionReceived',
+              'formFields.isSrROTCCommissioned',
+              'formFields.hasDoDLoanPaymentPeriod',
+            ],
+            properties: {
+              [formFields.militaryCommissionReceived]: {
+                type: 'boolean',
+                properties: {},
+              },
+              [formFields.isSrROTCCommissioned]: {
+                type: 'boolean',
+                properties: {},
+              },
+              'view:isSrROTCCommissionedDescription': {
+                type: 'object',
+                properties: {},
+              },
+              [formFields.hasDoDLoanPaymentPeriod]: {
+                type: 'boolean',
+                properties: {},
+              },
+              'view:hasDoDLoanPaymentPeriodDescription': {
+                type: 'object',
+                properties: {},
+              },
+            },
           },
         },
       },
