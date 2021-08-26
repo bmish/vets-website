@@ -6,7 +6,7 @@ import AppointmentDateTime from '../AppointmentDateTime';
 import PageLayout from '../AppointmentsPage/PageLayout';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import DetailsCalendarLink from './CalendarLink';
-import DetailsAlert from './StatusAlert';
+import StatusAlert from './StatusAlert';
 import TypeHeader from './TypeHeader';
 import PrintLink from './PrintLink';
 import AtlasLocation from '../cards/confirmed/AtlasLocation';
@@ -32,9 +32,9 @@ export default function DetailsVideoAtlas({ appointment, facilityData }) {
         <AppointmentDateTime appointment={appointment} />
       </h1>
 
-      <DetailsAlert appointment={appointment} facility={facility} />
+      <StatusAlert appointment={appointment} facility={facility} />
 
-      <TypeHeader>VA Video Connect at an ATLAS location</TypeHeader>
+      <TypeHeader isVideo>VA Video Connect at an ATLAS location</TypeHeader>
 
       <span>
         You must join this video meeting from the ATLAS (non-VA) location listed
