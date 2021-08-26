@@ -36,10 +36,13 @@ export default function DetailsVideoAtlas({ appointment, facilityData }) {
 
       <TypeHeader isVideo>VA Video Connect at an ATLAS location</TypeHeader>
 
-      <span>
-        You must join this video meeting from the ATLAS (non-VA) location listed
-        below.
-      </span>
+      {!isPastAppointment && (
+        <span>
+          You must join this video meeting from the ATLAS (non-VA) location
+          listed below.
+        </span>
+      )}
+      {isPastAppointment && <span>Video conference</span>}
 
       <div className="vads-u-margin-top--2">
         <AtlasLocation
