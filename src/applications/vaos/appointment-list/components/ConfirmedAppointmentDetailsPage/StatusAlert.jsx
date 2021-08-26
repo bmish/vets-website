@@ -4,7 +4,7 @@ import recordEvent from 'platform/monitoring/record-event';
 import InfoAlert from '../../../components/InfoAlert';
 import { APPOINTMENT_STATUS, GA_PREFIX } from '../../../utils/constants';
 
-export function DetailsAlert({ appointment, facility }) {
+export default function StatusAlert({ appointment, facility }) {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
   const showConfirmMsg = queryParams.get('confirmMsg');

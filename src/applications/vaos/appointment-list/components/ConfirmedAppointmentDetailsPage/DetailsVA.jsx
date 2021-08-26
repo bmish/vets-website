@@ -7,12 +7,12 @@ import AppointmentDateTime from '../AppointmentDateTime';
 import PageLayout from '../AppointmentsPage/PageLayout';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import InfoAlert from '../../../components/InfoAlert';
-import { DetailsCalendarLink } from './DetailsCalendarLink';
-import { CancelLink } from './CancelLink';
-import { DetailsAlert } from './DetailsAlert';
-import { TypeHeader } from './TypeHeader';
-import { PrintLink } from './PrintLink';
-import { VAInstructions } from './VAinstructions';
+import CalendarLink from './CalendarLink';
+import CancelLink from './CancelLink';
+import StatusAlert from './StatusAlert';
+import TypeHeader from './TypeHeader';
+import PrintLink from './PrintLink';
+import VAInstructions from './VAinstructions';
 import { selectFeatureCancel } from '../../../redux/selectors';
 import { useSelector } from 'react-redux';
 
@@ -26,7 +26,7 @@ function formatHeader(appointment) {
   }
 }
 
-export default function VistaDetails({ appointment, facilityData }) {
+export default function DetailsVA({ appointment, facilityData }) {
   const showCancelButton = useSelector(selectFeatureCancel);
   const locationId = getVAAppointmentLocationId(appointment);
 
@@ -50,7 +50,7 @@ export default function VistaDetails({ appointment, facilityData }) {
         <AppointmentDateTime appointment={appointment} />
       </h1>
 
-      <DetailsAlert appointment={appointment} facility={facility} />
+      <StatusAlert appointment={appointment} facility={facility} />
 
       <TypeHeader>{header}</TypeHeader>
 
@@ -67,7 +67,7 @@ export default function VistaDetails({ appointment, facilityData }) {
 
       {!canceled &&
         !isPastAppointment && (
-          <DetailsCalendarLink appointment={appointment} facility={facility} />
+          <CalendarLink appointment={appointment} facility={facility} />
         )}
       {!canceled && <PrintLink />}
       {canCancel && <CancelLink appointment={appointment} />}

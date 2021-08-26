@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function PrintLink() {
+export default function PrintLink() {
   return (
     <div className="vads-u-margin-top--2 vaos-appts__block-label vaos-hide-for-print">
       <i

@@ -2,7 +2,7 @@ import React from 'react';
 import AddToCalendar from '../../../components/AddToCalendar';
 import { getCalendarData } from '../../../services/appointment';
 
-export function DetailsCalendarLink({ appointment, facility }) {
+export default function CalendarLink({ appointment, facility }) {
   const calendarData = getCalendarData({
     appointment,
     facility,

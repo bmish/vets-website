@@ -9,7 +9,7 @@ import AtlasLocation from './AtlasLocation';
 import VAFacilityLocation from '../../../components/VAFacilityLocation';
 import FacilityPhone from 'applications/vaos/components/FacilityPhone';
 import VideoVisitProvider from './VideoVisitProvider';
-import { VideoVisitInstructions } from './VideoInstructions';
+import { VideoVisitInstructions } from './VideoVisitInstructions';
 import AddToCalendar from 'applications/vaos/components/AddToCalendar';
 import InfoAlert from '../../../components/InfoAlert';
 import moment from 'applications/vaos/lib/moment-tz';

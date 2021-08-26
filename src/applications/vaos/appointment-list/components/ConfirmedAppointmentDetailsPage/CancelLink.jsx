@@ -11,7 +11,7 @@ function formatAppointmentDate(date) {
   return date.format('MMMM D, YYYY');
 }
 
-export function CancelLink({ appointment }) {
+export default function CancelLink({ appointment }) {
   const dispatch = useDispatch();
   return (
     <div className="vads-u-margin-top--2 vaos-appts__block-label vaos-hide-for-print">

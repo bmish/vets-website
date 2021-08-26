@@ -5,16 +5,16 @@ import { APPOINTMENT_STATUS } from '../../../utils/constants';
 import AppointmentDateTime from '../AppointmentDateTime';
 import PageLayout from '../AppointmentsPage/PageLayout';
 import Breadcrumbs from '../../../components/Breadcrumbs';
-import { DetailsCalendarLink } from './DetailsCalendarLink';
-import { DetailsAlert } from './DetailsAlert';
-import { TypeHeader } from './TypeHeader';
-import { PrintLink } from './PrintLink';
-import { VAInstructions } from './VAinstructions';
+import DetailsCalendarLink from './CalendarLink';
+import DetailsAlert from './StatusAlert';
+import TypeHeader from './TypeHeader';
+import PrintLink from './PrintLink';
 import AtlasLocation from '../cards/confirmed/AtlasLocation';
 import VideoVisitProvider from './VideoVisitProvider';
-import { NoCancelAlert } from './NoCancelAlert';
+import NoCancelAlert from './NoCancelAlert';
+import VideoInstructions from './VideoInstructions';
 
-export default function VistaAtlasDetails({ appointment, facilityData }) {
+export default function DetailsVideoAtlas({ appointment, facilityData }) {
   const { providers } = appointment.videoData;
   const locationId = getVAAppointmentLocationId(appointment);
   const facility = facilityData?.[locationId];
@@ -57,7 +57,7 @@ export default function VistaAtlasDetails({ appointment, facilityData }) {
         </div>
       )}
 
-      <VAInstructions appointment={appointment} />
+      <VideoInstructions appointment={appointment} />
 
       {!canceled &&
         !isPastAppointment && (

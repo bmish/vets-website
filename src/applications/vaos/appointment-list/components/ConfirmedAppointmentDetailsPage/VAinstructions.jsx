@@ -1,7 +1,7 @@
 import React from 'react';
 import { PURPOSE_TEXT } from '../../../utils/constants';
 
-export function VAInstructions({ appointment }) {
+export default function VAInstructions({ appointment }) {
   const showInstructions = PURPOSE_TEXT.some(purpose =>
     appointment?.comment?.startsWith(purpose.short),
   );

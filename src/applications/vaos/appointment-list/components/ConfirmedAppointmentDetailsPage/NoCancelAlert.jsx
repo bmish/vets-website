@@ -3,7 +3,7 @@ import FacilityPhone from '../../../components/FacilityPhone';
 import InfoAlert from '../../../components/InfoAlert';
 import { getFacilityPhone } from '../../../services/location';
 
-export function NoCancelAlert({ facility }) {
+export default function NoCancelAlert({ facility }) {
   const name = facility?.name;
   const facilityPhone = getFacilityPhone(facility);
 
