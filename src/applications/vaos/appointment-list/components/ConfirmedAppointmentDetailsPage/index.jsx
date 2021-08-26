@@ -37,7 +37,7 @@ import {
   fetchConfirmedAppointmentDetails,
 } from '../../redux/actions';
 import { getConfirmedAppointmentDetailsInfo } from '../../redux/selectors';
-import VAInPersonDetails from './VAInPersonDetails';
+import VistaDetails from './VistaDetails';
 
 function formatAppointmentDate(date) {
   if (!date.isValid()) {
@@ -152,10 +152,7 @@ export default function ConfirmedAppointmentDetailsPage() {
   ) {
     return (
       <>
-        <VAInPersonDetails
-          appointment={appointment}
-          facilityData={facilityData}
-        />
+        <VistaDetails appointment={appointment} facilityData={facilityData} />
         <CancelAppointmentModal
           {...cancelInfo}
           onConfirm={() => dispatch(confirmCancelAppointment())}

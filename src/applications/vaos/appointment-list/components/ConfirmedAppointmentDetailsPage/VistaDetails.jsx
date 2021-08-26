@@ -26,7 +26,7 @@ function formatHeader(appointment) {
   }
 }
 
-export default function VAInPersonDetails({ appointment, facilityData }) {
+export default function VistaDetails({ appointment, facilityData }) {
   const showCancelButton = useSelector(selectFeatureCancel);
   const locationId = getVAAppointmentLocationId(appointment);
 
