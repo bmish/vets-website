@@ -38,6 +38,7 @@ import {
 } from '../../redux/actions';
 import { getConfirmedAppointmentDetailsInfo } from '../../redux/selectors';
 import VADetails from './VADetails';
+import VideoAtlasDetails from './VideoAtlasDetails';
 
 function formatAppointmentDate(date) {
   if (!date.isValid()) {
@@ -153,6 +154,20 @@ export default function ConfirmedAppointmentDetailsPage() {
     return (
       <>
         <VADetails appointment={appointment} facilityData={facilityData} />
+        <CancelAppointmentModal
+          {...cancelInfo}
+          onConfirm={() => dispatch(confirmCancelAppointment())}
+          onClose={() => dispatch(closeCancelAppointment())}
+        />
+      </>
+    );
+  } else if (appointment.videoData.isAtlas) {
+    return (
+      <>
+        <VideoAtlasDetails
+          appointment={appointment}
+          facilityData={facilityData}
+        />
         <CancelAppointmentModal
           {...cancelInfo}
           onConfirm={() => dispatch(confirmCancelAppointment())}
