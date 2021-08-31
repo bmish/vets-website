@@ -1,4 +1,8 @@
 {
+  "introductionPage": {
+    "mainTitle": "Mag-apply para sa Programa ng Komprehensibong Tulong para sa Mga Nag-aalaga ng Pamilya",
+    "stepsHeading": "Sundin ang mga hakbang sa ibaba upang mag-apply para sa i18n form poc app."
+  },
   "form-name": "Halimbawa na Porma",
   "first-name": "Pangalan",
   "first-name-placeholder": "Ilagay ang iyong pangalan",

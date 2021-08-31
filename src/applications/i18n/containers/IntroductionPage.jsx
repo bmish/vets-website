@@ -13,9 +13,10 @@ class IntroductionPage extends React.Component {
   }
 
   render() {
+    const i18n = this.props.i18n;
     return (
       <div className="schemaform-intro">
-        <FormTitle title="i18n" />
+        <FormTitle title={i18n.t('introductionPage.mainTitle')} />
         <p>Equal to VA Form 00-0000 (i18n).</p>
         <SaveInProgressIntro
           prefillEnabled={this.props.route.formConfig.prefillEnabled}
@@ -25,7 +26,7 @@ class IntroductionPage extends React.Component {
         >
           Please complete the 00-0000 form to apply for i18n form poc app.
         </SaveInProgressIntro>
-        <h4>{this.props.i18n.t('introductionPage.stepsHeading')}</h4>
+        <h4>{i18n.t('introductionPage.stepsHeading')}</h4>
         <div className="process schemaform-process">
           <ol>
             <li className="process-step list-one">
