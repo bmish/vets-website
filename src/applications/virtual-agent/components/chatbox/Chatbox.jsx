@@ -48,22 +48,15 @@ export default function Chatbox(props) {
 function LoginRequiredAlert({ toggleLoginModal }) {
   return (
     <>
-      <AlertBox
-        isVisible
-        status="continue"
-        headline="Please sign in to review your information"
-        content={
-          <>
-            <p>Sign in to speak with the chatbot.</p>
-            <button
-              className="usa-button-primary"
-              onClick={() => toggleLoginModal(true)}
-            >
-              Sign in to VA.gov
-            </button>
-          </>
-        }
-      />
+      <va-alert status="continue">
+        <p>Sign in to speak with the chatbot.</p>
+        <button
+          className="usa-button-primary"
+          onClick={() => toggleLoginModal(true)}
+        >
+          Sign in to VA.gov
+        </button>
+      </va-alert>
       <br />
     </>
   );
