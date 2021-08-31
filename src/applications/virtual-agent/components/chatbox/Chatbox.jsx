@@ -5,7 +5,7 @@ import useWebChatFramework from './useWebChatFramework';
 import useVirtualAgentToken from './useVirtualAgentToken';
 import { toggleLoginModal } from 'platform/site-wide/user-nav/actions';
 import AlertBox from '@department-of-veterans-affairs/component-library/AlertBox';
-import { connect } from 'react-redux';
+import { connect, useSelector } from "react-redux";
 import WebChat from '../webchat/WebChat';
 import {
   combineLoadingStatus,
@@ -31,6 +31,8 @@ function useWebChat(props) {
 }
 
 export default function Chatbox(props) {
+  const isLoggedIn = useSelector(state => state.user.login.currentlyLoggedIn);
+
   const ONE_MINUTE = 1 * 60 * 1000;
   return (
     <div className="vads-u-padding--1p5 vads-u-background-color--gray-lightest">
@@ -39,8 +41,11 @@ export default function Chatbox(props) {
           VA Virtual Agent (beta)
         </h2>
       </div>
-      <ConnectedLoginRequiredAlert handleLogin={() => {}}/>
-      <App timeout={props.timeout || ONE_MINUTE} />
+      {!isLoggedIn ? (
+        <ConnectedLoginRequiredAlert handleLogin={() => {}} />
+      ) : (
+        <App timeout={props.timeout || ONE_MINUTE} />
+      )}
     </div>
   );
 }
