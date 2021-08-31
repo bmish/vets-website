@@ -3,6 +3,9 @@ import LoadingIndicator from '@department-of-veterans-affairs/component-library/
 import ChatbotError from '../chatbot-error/ChatbotError';
 import useWebChatFramework from './useWebChatFramework';
 import useVirtualAgentToken from './useVirtualAgentToken';
+import { toggleLoginModal } from 'platform/site-wide/user-nav/actions';
+import AlertBox from '@department-of-veterans-affairs/component-library/AlertBox';
+import { connect } from 'react-redux';
 import WebChat from '../webchat/WebChat';
 import {
   combineLoadingStatus,
@@ -36,10 +39,43 @@ export default function Chatbox(props) {
           VA Virtual Agent (beta)
         </h2>
       </div>
+      <ConnectedLoginRequiredAlert handleLogin={() => {}}/>
       <App timeout={props.timeout || ONE_MINUTE} />
     </div>
   );
 }
+
+function LoginRequiredAlert({ toggleLoginModal }) {
+  return (
+    <>
+      <AlertBox
+        isVisible
+        status="continue"
+        headline="Please sign in to review your information"
+        content={
+          <>
+            <p>Sign in to speak with the chatbot.</p>
+            <button
+              className="usa-button-primary"
+              onClick={() => toggleLoginModal(true)}
+            >
+              Sign in to VA.gov
+            </button>
+          </>
+        }
+      />
+      <br />
+    </>
+  );
+}
+const mapDispatchToProps = {
+  toggleLoginModal,
+};
+
+const ConnectedLoginRequiredAlert = connect(
+  null,
+  mapDispatchToProps,
+)(LoginRequiredAlert);
 
 function App(props) {
   const { token, WebChatFramework, loadingStatus } = useWebChat(props);
