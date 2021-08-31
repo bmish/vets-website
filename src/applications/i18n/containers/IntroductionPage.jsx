@@ -17,7 +17,7 @@ class IntroductionPage extends React.Component {
     return (
       <div className="schemaform-intro">
         <FormTitle title={i18n.t('introductionPage.mainTitle')} />
-        <p>Equal to VA Form 00-0000 (i18n).</p>
+        <p>{i18n.t('introductionPage.equalToForm')}</p>
         <SaveInProgressIntro
           prefillEnabled={this.props.route.formConfig.prefillEnabled}
           messages={this.props.route.formConfig.savedFormMessages}
@@ -30,17 +30,20 @@ class IntroductionPage extends React.Component {
         <div className="process schemaform-process">
           <ol>
             <li className="process-step list-one">
-              <h5>Prepare</h5>
-              <h6>To fill out this application, you’ll need your:</h6>
+              <h5>{i18n.t('introductionPage.step1.prepare')}</h5>
+              <h6>
+                {i18n.t('introductionPage.step1.toFillOutThisApplication')}
+              </h6>
               <ul>
-                <li>Social Security number (required)</li>
+                <li>{i18n.t('introductionPage.step1.socialSecurityNumber')}</li>
               </ul>
               <p>
-                <strong>What if I need help filling out my application?</strong>{' '}
-                An accredited representative, like a Veterans Service Officer
-                (VSO), can help you fill out your claim.{' '}
+                <strong>
+                  {i18n.t('introductionPage.step1.whatIfINeedHelp')}
+                </strong>{' '}
+                {i18n.t('introductionPage.step1.anAccreditedRepresentative')}{' '}
                 <a href="/disability-benefits/apply/help/index.html">
-                  Get help filing your claim
+                  {i18n.t('introductionPage.step1.getHelpFiling')}
                 </a>
               </p>
             </li>

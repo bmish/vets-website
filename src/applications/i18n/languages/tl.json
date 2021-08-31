@@ -1,7 +1,16 @@
 {
   "introductionPage": {
     "mainTitle": "Mag-apply para sa Programa ng Komprehensibong Tulong para sa Mga Nag-aalaga ng Pamilya",
-    "stepsHeading": "Sundin ang mga hakbang sa ibaba upang mag-apply para sa i18n form poc app."
+    "equalToForm": "Katumbas ng form VA 00-0000(i18n).",
+    "stepsHeading": "Sundin ang mga hakbang sa ibaba upang mag-apply para sa i18n form poc app.",
+    "step1": {
+      "prepare": "Maghanda ka",
+      "toFillOutThisApplication": "Upang punan ang application na ito, kakailanganin mo ang iyong:",
+      "socialSecurityNumber": "Numero ng Social Security (kinakailangan)",
+      "whatIfINeedHelp": "Paano kung kailangan ko ng tulong sa pagpunan ng aking aplikasyon?",
+      "anAccreditedRepresentative": "Ang isang kinikilalang kinatawan, tulad ng isang Veterans Service Officer (VSO), ay maaaring makatulong sa iyo na punan ang iyong paghahabol.",
+      "getHelpFiling": "Humingi ng tulong sa pag-file ng iyong claim"
+    }
   },
   "form-name": "Halimbawa na Porma",
   "first-name": "Pangalan",

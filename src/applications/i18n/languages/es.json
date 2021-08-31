@@ -1,7 +1,16 @@
 {
   "introductionPage": {
     "mainTitle": "Solicita el Programa de Asistencia Integral para Cuidadores Familiares",
-    "stepsHeading": "Siga los pasos a continuación para solicitar la aplicación i18n form poc."
+    "equalToForm": "Igual a la Forma VA 00-000(i18n).",
+    "stepsHeading": "Siga los pasos a continuación para solicitar la aplicación i18n form poc.",
+    "step1": {
+      "prepare": "Preparar",
+      "toFillOutThisApplication": "Para completar esta solicitud, necesitará su:",
+      "socialSecurityNumber": "Número de seguro social (requerido)",
+      "whatIfINeedHelp": "¿Qué pasa si necesito ayuda para completar mi solicitud?",
+      "anAccreditedRepresentative": "Un representante acreditado, como un Oficial de Servicio para Veteranos (VSO), puede ayudarlo a completar su reclamo.",
+      "getHelpFiling": "Obtenga ayuda para presentar su reclamo"
+    }
   },
   "pageTwo": {
     "label": "La etiqueta esta aqui"

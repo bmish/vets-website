@@ -292,6 +292,7 @@
     "history": "3",
     "history-v4": "npm:history@4.9.0",
     "i18next": "^20.4.0",
+    "i18next-browser-languagedetector": "^6.1.2",
     "ics-js": "^0.10.2",
     "js-cookie": "^2.2.1",
     "jsonschema": "^1.1.1",
