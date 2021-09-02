@@ -17,7 +17,7 @@ export class ChatbotComponent extends React.Component {
   async componentDidMount() {
     const initialComponent = document.querySelector(`#${idString}`);
     try {
-      GaEvents.addLinkClickListener();
+      // GaEvents.addLinkClickListener();
       Utils.handleButtonsPostRender();
       const webchatOptions = await ChatbotModule.initializeChatbot();
       if (!webchatOptions) {
@@ -26,6 +26,7 @@ export class ChatbotComponent extends React.Component {
       GaEvents.recordChatbotSuccess();
       window.WebChat.renderWebChat(webchatOptions, initialComponent);
     } catch (error) {
+      console.log(error);
       GaEvents.recordChatbotFailure(error);
       // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({
