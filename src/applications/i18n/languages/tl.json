@@ -1,4 +1,6 @@
 {
+  "backButtonText": "Bumalik ka",
+  "forwardButtonText": "Magpatuloy",
   "introductionPage": {
     "mainTitle": "Mag-apply para sa Programa ng Komprehensibong Tulong para sa Mga Nag-aalaga ng Pamilya",
     "equalToForm": "Katumbas ng form VA 00-0000(i18n).",
@@ -11,6 +13,13 @@
       "anAccreditedRepresentative": "Ang isang kinikilalang kinatawan, tulad ng isang Veterans Service Officer (VSO), ay maaaring makatulong sa iyo na punan ang iyong paghahabol.",
       "getHelpFiling": "Humingi ng tulong sa pag-file ng iyong claim"
     }
+  },
+  "chapter1": {
+    "title": "Personal na impormasyon"
+  },
+  "pageTwo": {
+    "label": "The label is here",
+    "labelB": "This is label B"
   },
   "form-name": "Halimbawa na Porma",
   "first-name": "Pangalan",

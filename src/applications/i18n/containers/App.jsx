@@ -2,7 +2,12 @@ import React from 'react';
 
 import RoutedSavableApp from 'platform/forms/save-in-progress/RoutedSavableApp';
 import formConfig from '../config/form';
+import { removeInProgressForm } from 'platform/forms/save-in-progress/actions';
+
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { useTranslation } from 'react-i18next';
+
 import '../languages';
 
 const languageOptions = {
@@ -11,8 +16,22 @@ const languageOptions = {
   tl: { nativeName: 'Tagalog' },
 };
 
-export default function App({ location, children }) {
+const App = props => {
   const { i18n } = useTranslation();
+
+  const { location, children } = props;
+
+  const handleLanguageChange = languageCode => {
+    i18n.changeLanguage(languageCode);
+    const currentPath = props.router.getCurrentLocation()?.pathname;
+
+    // not sure how to handle lang change when viewing a page with the old form fields
+    // the language will not update until the form is manually refreshed/re-rendered
+    if (currentPath === '/first-name') {
+      props.router.go('/i18n');
+    }
+  };
+
   return (
     <div>
       <div className="row vads-u-margin-y--2">
@@ -24,7 +43,7 @@ export default function App({ location, children }) {
                   style={{
                     fontWeight: i18n.language === lng ? 'bold' : 'normal',
                   }}
-                  onClick={() => i18n.changeLanguage(lng)}
+                  onClick={() => handleLanguageChange(lng)}
                   className="va-button-link"
                 >
                   {languageOptions[lng].nativeName}
@@ -47,4 +66,29 @@ export default function App({ location, children }) {
       </RoutedSavableApp>
     </div>
   );
+};
+
+function mapStateToProps(state) {
+  return {
+    formId: state.form.formId,
+    returnUrl: state.form.loadedData.metadata.returnUrl,
+    lastSavedDate: state.form.lastSavedDate,
+    expirationDate: state.form.expirationDate,
+    migrations: state.form.migrations,
+    prefillTransformer: state.form.prefillTransformer,
+    user: state.user,
+  };
 }
+
+const mapDispatchToProps = {
+  removeInProgressForm,
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(App),
+);
+
+export { App };

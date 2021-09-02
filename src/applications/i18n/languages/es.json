@@ -1,4 +1,6 @@
 {
+  "backButtonText": "Regresa",
+  "forwardButtonText": "Seguir",
   "introductionPage": {
     "mainTitle": "Solicita el Programa de Asistencia Integral para Cuidadores Familiares",
     "equalToForm": "Igual a la Forma VA 00-000(i18n).",
@@ -11,6 +13,9 @@
       "anAccreditedRepresentative": "Un representante acreditado, como un Oficial de Servicio para Veteranos (VSO), puede ayudarlo a completar su reclamo.",
       "getHelpFiling": "Obtenga ayuda para presentar su reclamo"
     }
+  },
+  "chapter1": {
+    "title": "Informacion personal"
   },
   "pageTwo": {
     "label": "La etiqueta esta aqui"

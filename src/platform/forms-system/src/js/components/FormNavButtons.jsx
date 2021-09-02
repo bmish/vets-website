@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import ProgressButton from './ProgressButton';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Render the form navigation buttons for the normal form page flow.
@@ -11,29 +12,32 @@ import ProgressButton from './ProgressButton';
  * the `goForward` function to the form's `onSubmit` instead. Doing this will
  * navigate the user to the next page only if validation is successful.
  */
-const FormNavButtons = ({ goBack, goForward, submitToContinue }) => (
-  <div className="row form-progress-buttons schemaform-buttons">
-    <div className="small-6 medium-5 columns">
-      {goBack && (
+const FormNavButtons = ({ goBack, goForward, submitToContinue }) => {
+  const i18n = useTranslation();
+  return (
+    <div className="row form-progress-buttons schemaform-buttons">
+      <div className="small-6 medium-5 columns">
+        {goBack && (
+          <ProgressButton
+            onButtonClick={goBack}
+            buttonText={i18n.t('backButtonText')}
+            buttonClass="usa-button-secondary"
+            beforeText="«"
+          />
+        )}
+      </div>
+      <div className="small-6 medium-5 end columns">
         <ProgressButton
-          onButtonClick={goBack}
-          buttonText="Back"
-          buttonClass="usa-button-secondary"
-          beforeText="«"
+          submitButton={submitToContinue}
+          onButtonClick={goForward}
+          buttonText={i18n.t('forwardButtonText')}
+          buttonClass="usa-button-primary"
+          afterText="»"
         />
-      )}
+      </div>
     </div>
-    <div className="small-6 medium-5 end columns">
-      <ProgressButton
-        submitButton={submitToContinue}
-        onButtonClick={goForward}
-        buttonText="Continue"
-        buttonClass="usa-button-primary"
-        afterText="»"
-      />
-    </div>
-  </div>
-);
+  );
+};
 
 FormNavButtons.propTypes = {
   goBack: propTypes.func,

@@ -2,6 +2,8 @@
 
 import manifest from '../manifest.json';
 
+import i18n from '../languages';
+
 import IntroductionPage from '../containers/IntroductionPage';
 import ConfirmationPage from '../containers/ConfirmationPage';
 import PageTwo from '../containers/PageTwo';
@@ -40,11 +42,11 @@ const formConfig = {
     noAuth:
       'Please sign in again to continue your application for i18n form poc app.',
   },
-  title: 'i18n',
+  title: 'i18n title here!',
   defaultDefinitions: {},
   chapters: {
     chapter1: {
-      title: 'Personal Information',
+      title: i18n.t('chapter1.title'),
       pages: {
         page1: {
           path: 'first-name',
