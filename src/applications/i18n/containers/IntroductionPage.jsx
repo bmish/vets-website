@@ -16,34 +16,41 @@ class IntroductionPage extends React.Component {
     const i18n = this.props.i18n;
     return (
       <div className="schemaform-intro">
-        <FormTitle title={i18n.t('introductionPage.mainTitle')} />
-        <p>{i18n.t('introductionPage.equalToForm')}</p>
-        <SaveInProgressIntro
-          prefillEnabled={this.props.route.formConfig.prefillEnabled}
-          messages={this.props.route.formConfig.savedFormMessages}
-          pageList={this.props.route.pageList}
-          startText="Start the Application"
+        <FormTitle title={i18n.t('i18n:introductionPage.mainTitle')} />
+        <p>{i18n.t('i18n:introductionPage.equalToForm')}</p>
+
+        <a
+          className="vads-c-action-link--green"
+          href="#"
+          onClick={() =>
+            this.props.router.push(this.props.routes[1].pageList[1].path)
+          }
         >
-          Please complete the 00-0000 form to apply for i18n form poc app.
-        </SaveInProgressIntro>
-        <h4>{i18n.t('introductionPage.stepsHeading')}</h4>
+          {i18n.t('i18n:introductionPage.start')}
+        </a>
+
+        <h4>{i18n.t('i18n:introductionPage.stepsHeading')}</h4>
         <div className="process schemaform-process">
           <ol>
             <li className="process-step list-one">
-              <h5>{i18n.t('introductionPage.step1.prepare')}</h5>
+              <h5>{i18n.t('prepare')}</h5>
               <h6>
-                {i18n.t('introductionPage.step1.toFillOutThisApplication')}
+                {i18n.t('i18n:introductionPage.step1.toFillOutThisApplication')}
               </h6>
               <ul>
-                <li>{i18n.t('introductionPage.step1.socialSecurityNumber')}</li>
+                <li>
+                  {i18n.t('i18n:introductionPage.step1.socialSecurityNumber')}
+                </li>
               </ul>
               <p>
                 <strong>
-                  {i18n.t('introductionPage.step1.whatIfINeedHelp')}
+                  {i18n.t('i18n:introductionPage.step1.whatIfINeedHelp')}
                 </strong>{' '}
-                {i18n.t('introductionPage.step1.anAccreditedRepresentative')}{' '}
+                {i18n.t(
+                  'i18n:introductionPage.step1.anAccreditedRepresentative',
+                )}{' '}
                 <a href="/disability-benefits/apply/help/index.html">
-                  {i18n.t('introductionPage.step1.getHelpFiling')}
+                  {i18n.t('i18n:introductionPage.step1.getHelpFiling')}
                 </a>
               </p>
             </li>

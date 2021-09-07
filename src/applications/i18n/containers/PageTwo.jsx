@@ -28,11 +28,15 @@ const PageTwo = ({
         onSubmit={onReviewPage ? updatePage : goForward}
       >
         <Form>
-          <TextField name="pageTwoData" label={t('pageTwo.label')} required />
+          <TextField
+            name="pageTwoData"
+            label={t('i18n:pageTwo.label')}
+            required={t('required')}
+          />
 
           {/* <TextField name="lastName" label="last name" required /> */}
-          <label htmlFor="pageTwoDataB">{t('pageTwo.labelB')}</label>
-          <Field type="text" name="pageTwoDataB" label="pageTwoDataB label" />
+          <label htmlFor="pageTwoDataB">{t('i18n:pageTwo.labelB')}</label>
+          <Field type="text" name="pageTwoDataB" />
           {onReviewPage ? updateButton : navButtons}
         </Form>
       </Formik>

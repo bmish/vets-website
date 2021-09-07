@@ -2,7 +2,7 @@
 
 import manifest from '../manifest.json';
 
-import i18n from '../languages';
+import FormTitleCustom from '../components/FormTitleCustom';
 
 import IntroductionPage from '../containers/IntroductionPage';
 import ConfirmationPage from '../containers/ConfirmationPage';
@@ -42,11 +42,11 @@ const formConfig = {
     noAuth:
       'Please sign in again to continue your application for i18n form poc app.',
   },
-  title: 'i18n title here!',
+  title: FormTitleCustom,
   defaultDefinitions: {},
   chapters: {
     chapter1: {
-      title: i18n.t('chapter1.title'),
+      title: 'Static Title',
       pages: {
         page1: {
           path: 'first-name',

@@ -1,0 +1,17 @@
+{
+  "backButtonText": "Back",
+  "email": "Email",
+  "emailInvalid": "Please enter a valid email address",
+  "emailPlaceholder": "Enter your email",
+  "emailRequired": "Email is required",
+  "firstName": "First Name",
+  "firstNamePlaceholder": "Enter your first name",
+  "forwardButtonText": "Continue",
+  "lastName": "Last Name",
+  "lastNamePlaceholder": "Enter your last name",
+  "pleaseCompleteAll": "Please complete all the following information.",
+  "prepare": "Prepare!!!!!!",
+  "required": "Required",
+  "reset": "reset",
+  "submit": "submit"
+}

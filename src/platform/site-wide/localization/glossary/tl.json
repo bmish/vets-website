@@ -1,0 +1,17 @@
+{
+  "backButtonText": "Bumalik ka",
+  "email": "Email",
+  "emailInvalid": "Mangyaring maglagay ng wastong email address",
+  "emailPlaceholder": "Ipasok ang iyong Email",
+  "emailRequired": "Kailangan ng email",
+  "firstName": "Pangalan",
+  "firstNamePlaceholder": "Ilagay ang iyong pangalan",
+  "forwardButtonText": "Magpatuloy",
+  "lastName": "Huling pangalan",
+  "lastNamePlaceholder": "Ipasok ang iyong apelyido",
+  "pleaseCompleteAll": "Mangyaring kumpletuhin ang lahat ng sumusunod na impormasyon.",
+  "prepare": "Maghanda ka",
+  "required": "Kailangan",
+  "reset": "i-reset",
+  "submit": "ipasa"
+}

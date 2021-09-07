@@ -23,13 +23,6 @@ const App = props => {
 
   const handleLanguageChange = languageCode => {
     i18n.changeLanguage(languageCode);
-    const currentPath = props.router.getCurrentLocation()?.pathname;
-
-    // not sure how to handle lang change when viewing a page with the old form fields
-    // the language will not update until the form is manually refreshed/re-rendered
-    if (currentPath === '/first-name') {
-      props.router.go('/i18n');
-    }
   };
 
   return (

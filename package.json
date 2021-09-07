@@ -328,6 +328,7 @@
     "regenerator-runtime": "^0.13.7",
     "reselect": "^2.5.4",
     "styled-components": "^5.2.3",
+    "translation-check": "^1.0.1",
     "url-search-params": "^1.1.0",
     "url-search-params-polyfill": "^8.1.0",
     "uswds": "1.6.10",

@@ -1,34 +1,10 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import i18n from 'platform/site-wide/localization';
 import en from './en.json';
 import es from './es.json';
 import tl from './tl.json';
 
-// the translations
-// (tip move them in a JSON file and import them)
-const resources = {
-  en: {
-    translation: en,
-  },
-  es: {
-    translation: es,
-  },
-  tl: {
-    translation: tl,
-  },
-};
-
-i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    resources,
-    fallbackLng: 'en',
-    debug: true,
-    interpolation: {
-      escapeValue: false,
-    },
-  });
+i18n.addResourceBundle('en', 'i18n', en);
+i18n.addResourceBundle('es', 'i18n', es);
+i18n.addResourceBundle('tl', 'i18n', tl);
 
 export default i18n;

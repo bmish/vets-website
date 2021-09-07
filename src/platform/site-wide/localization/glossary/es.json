@@ -1,0 +1,17 @@
+{
+  "backButtonText": "Regresa",
+  "email": "Email",
+  "emailInvalid": "Por favor, introduce una dirección de correo electrónico válida",
+  "emailPlaceholder": "Introduce tu correo electrónico",
+  "emailRequired": "Correo electronico es requerido",
+  "firstName": "Primer nombre",
+  "firstNamePlaceholder": "Ponga su primer nombre",
+  "forwardButtonText": "Seguir",
+  "lastName": "Apellido",
+  "lastNamePlaceholder": "Ingrese su apellido",
+  "pleaseCompleteAll": "Please complete all the following information.",
+  "prepare": "Preparar",
+  "required": "Obligatorio",
+  "reset": "reiniciar",
+  "submit": "entregar"
+}

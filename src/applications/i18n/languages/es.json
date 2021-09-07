@@ -1,12 +1,12 @@
 {
-  "backButtonText": "Regresa",
-  "forwardButtonText": "Seguir",
+  "title": "Solicita el Programa de Asistencia Integral para Cuidadores Familiares",
   "introductionPage": {
     "mainTitle": "Solicita el Programa de Asistencia Integral para Cuidadores Familiares",
-    "equalToForm": "Igual a la Forma VA 00-000(i18n).",
-    "stepsHeading": "Siga los pasos a continuación para solicitar la aplicación i18n form poc.",
+    "equalToForm": "Igual al formulario VA 10-10CG (Solicitud de beneficios para cuidadores familiares)",
+    "introText": "Reconocemos el importante papel de los cuidadores familiares en el apoyo a la salud y el bienestar de los Veteranos.",
+    "start": "Inicie su aplicación",
+    "stepsHeading": "Siga estos pasos para comenzar:",
     "step1": {
-      "prepare": "Preparar",
       "toFillOutThisApplication": "Para completar esta solicitud, necesitará su:",
       "socialSecurityNumber": "Número de seguro social (requerido)",
       "whatIfINeedHelp": "¿Qué pasa si necesito ayuda para completar mi solicitud?",
@@ -18,17 +18,7 @@
     "title": "Informacion personal"
   },
   "pageTwo": {
-    "label": "La etiqueta esta aqui"
-  },
-  "form-name": "Formulario De Ejemplo",
-  "first-name": "Primer nombre",
-  "first-name-placeholder": "Ponga su primer nombre",
-  "last-name": "Apellido",
-  "last-name-placeholder": "Ingrese su apellido",
-  "email": "Email",
-  "email-placeholder": "Introduce tu correo electrónico",
-  "email-required": "Correo electronico es requerido",
-  "email-invalid": "Por favor, introduce una dirección de correo electrónico válida",
-  "reset": "reiniciar",
-  "submit": "entregar"
+    "label": "La etiqueta esta aqui",
+    "labelB": "Spanish labelB"
+  }
 }

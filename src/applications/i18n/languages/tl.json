@@ -1,12 +1,12 @@
 {
-  "backButtonText": "Bumalik ka",
-  "forwardButtonText": "Magpatuloy",
+  "title": "Mag-apply para sa Programa ng Komprehensibong Tulong para sa Mga Nag-aalaga ng Pamilya",
   "introductionPage": {
     "mainTitle": "Mag-apply para sa Programa ng Komprehensibong Tulong para sa Mga Nag-aalaga ng Pamilya",
-    "equalToForm": "Katumbas ng form VA 00-0000(i18n).",
-    "stepsHeading": "Sundin ang mga hakbang sa ibaba upang mag-apply para sa i18n form poc app.",
+    "equalToForm": "Katumbas ng Form ng VA 10-10CG (Application para sa Mga Pakinabang ng Tagapangalaga ng Pamilya)",
+    "introText": "Kinikilala namin ang mahalagang papel ng mga tagapag-alaga ng pamilya sa pagsuporta sa kalusugan at kalusugan ng mga Beterano.",
+    "start": "Simulan ang iyong aplikasyon",
+    "stepsHeading": "Sundin ang mga hakbang na ito upang makapagsimula:",
     "step1": {
-      "prepare": "Maghanda ka",
       "toFillOutThisApplication": "Upang punan ang application na ito, kakailanganin mo ang iyong:",
       "socialSecurityNumber": "Numero ng Social Security (kinakailangan)",
       "whatIfINeedHelp": "Paano kung kailangan ko ng tulong sa pagpunan ng aking aplikasyon?",
@@ -19,17 +19,6 @@
   },
   "pageTwo": {
     "label": "The label is here",
-    "labelB": "This is label B"
-  },
-  "form-name": "Halimbawa na Porma",
-  "first-name": "Pangalan",
-  "first-name-placeholder": "Ilagay ang iyong pangalan",
-  "last-name": "Huling pangalan",
-  "last-name-placeholder": "Ipasok ang iyong apelyido",
-  "email": "Email",
-  "email-placeholder": "Ipasok ang iyong Email",
-  "email-required": "Kailangan ng email",
-  "email-invalid": "Mangyaring maglagay ng wastong email address",
-  "reset": "i-reset",
-  "submit": "ipasa"
+    "labelB": "tagalog labelB"
+  }
 }

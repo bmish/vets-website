@@ -9,6 +9,7 @@ import './moment-setup';
 import './popups';
 import './wysiwyg-analytics-setup';
 import './component-library-analytics-setup';
+import './localization';
 import startUserNavWidget from './user-nav';
 import startMegaMenuWidget from './mega-menu';
 import startSideNav from './side-nav';
