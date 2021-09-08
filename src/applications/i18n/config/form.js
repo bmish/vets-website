@@ -6,21 +6,19 @@ import FormTitleCustom from '../components/FormTitleCustom';
 
 import IntroductionPage from '../containers/IntroductionPage';
 import ConfirmationPage from '../containers/ConfirmationPage';
+
+import Vet1 from '../containers/Vet1';
+import Vet1Review from '../containers/Vet1Review';
+
 import PageTwo from '../containers/PageTwo';
-import page2Review from '../containers/Page2Review';
+import Page2Review from '../containers/Page2Review';
 
 // const { } = fullSchema.properties;
 
 // const { } = fullSchema.definitions;
 
-const formFields = {
-  firstName: 'firstName',
-  pageTwoData: 'pageTwoData',
-  pageTwoDataB: 'pageTwoDataB',
-  lastName: 'lastName',
-};
-
 const formConfig = {
+  namespace: 'i18n',
   rootUrl: manifest.rootUrl,
   urlPrefix: '/',
   submitUrl: '/v0/api',
@@ -46,31 +44,23 @@ const formConfig = {
   defaultDefinitions: {},
   chapters: {
     chapter1: {
-      title: 'Static Title',
+      title: 'chapter1.title',
       pages: {
         page1: {
-          path: 'first-name',
-          title: 'Personal Information - Page 1',
-          uiSchema: {
-            [formFields.firstName]: {
-              'ui:title': 'First Name',
-            },
-          },
+          path: 'vet1',
+          CustomPage: Vet1,
+          CustomPageReview: Vet1Review,
           schema: {
-            required: [formFields.firstName],
             type: 'object',
-            properties: {
-              [formFields.firstName]: {
-                type: 'string',
-              },
-            },
+            properties: {},
           },
+          uiSchema: {},
         },
         page2: {
           path: 'second-page',
           title: 'Testing bypass with I18next',
           CustomPage: PageTwo,
-          CustomPageReview: page2Review,
+          CustomPageReview: Page2Review,
           schema: {
             type: 'object',
             properties: {},

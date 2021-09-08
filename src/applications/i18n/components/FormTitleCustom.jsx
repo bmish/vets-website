@@ -1,11 +1,11 @@
 import React from 'react';
 import { Translation } from 'react-i18next';
 
-const FormTitleCustom = () => {
+const FormTitleCustom = ({ formConfig: { namespace } }) => {
   return (
-    <Translation>
+    <Translation ns={namespace}>
       {t => {
-        return <>{t('i18n:title')}</>;
+        return <>{t('title')}</>;
       }}
     </Translation>
   );

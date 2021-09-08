@@ -9,9 +9,11 @@
   "forwardButtonText": "Seguir",
   "lastName": "Apellido",
   "lastNamePlaceholder": "Ingrese su apellido",
-  "pleaseCompleteAll": "Please complete all the following information.",
+  "navFormHeader": "Paso {{current}} de {{length}}: {{chapterName}}",
+  "pleaseCompleteAll": "Por favor complete toda la siguiente información.",
   "prepare": "Preparar",
   "required": "Obligatorio",
+  "requiredInvalid": "Por favor proporcione una respuesta.",
   "reset": "reiniciar",
   "submit": "entregar"
 }

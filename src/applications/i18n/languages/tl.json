@@ -15,7 +15,22 @@
     }
   },
   "chapter1": {
-    "title": "Personal na impormasyon"
+    "title": "Impormasyon ng Beterano",
+    "page1": {
+      "vetFirstName": "Unang pangalan ng Beterano",
+      "vetMiddleName": "Panggitnang pangalan ng Beterano",
+      "vetLastName": "Apelyido ng beterano",
+      "vetSSN": "Ang numero ng Social Security ng beterano o numero ng pagkilala sa buwis",
+      "vetSSNWhy": "Bakit kailangan ito?",
+      "vetSSNWhyExp": "Kailangan namin ang numero ng Social Security ng Beterano o numero ng pagkakakilanlan ng buwis upang maproseso ang aplikasyon kapag naisumite ito online, ngunit hindi ito kinakailangan na mag-apply para sa programa.",
+      "vetSSNRequired": "Mangyaring maglagay ng isang numero ng Social Security o pagkilala sa buwis",
+      "vetSSNInvalid": "Mangyaring maglagay ng wastong numero ng Social Security o pagkakakilanlan sa buwis",
+      "vetDOB": "Petsa ng kapanganakan ng Beterano",
+      "vetDOBMonth": "Buwan",
+      "vetDOBDay": "Araw",
+      "vetDOBYear": "Taon",
+      "vetSex": "Kasarian ng beterano"
+    }
   },
   "pageTwo": {
     "label": "The label is here",

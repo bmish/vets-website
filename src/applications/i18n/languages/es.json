@@ -15,7 +15,22 @@
     }
   },
   "chapter1": {
-    "title": "Informacion personal"
+    "title": "Información para veteranos",
+    "page1": {
+      "vetFirstName": "Nombre del veterano",
+      "vetMiddleName": "Segundo nombre del veterano",
+      "vetLastName": "Apellido del veterano",
+      "vetSSN": "Número de seguro social o número de identificación fiscal del veterano",
+      "vetSSNWhy": "¿Por qué se requiere esto?",
+      "vetSSNWhyExp": "Necesitamos el número de seguro social o el número de identificación fiscal del veterano para procesar la solicitud cuando se envía en línea, pero no es un requisito para solicitar el programa.",
+      "vetSSNRequired": "Ingrese un número de seguro social o de identificación fiscal",
+      "vetSSNInvalid": "Ingrese un número de seguro social o de identificación fiscal válido",
+      "vetDOB": "Fecha de nacimiento del veterano",
+      "vetDOBMonth": "Mes",
+      "vetDOBDay": "Dia",
+      "vetDOBYear": "Año",
+      "vetSex": "Sexo de veterano"
+    }
   },
   "pageTwo": {
     "label": "La etiqueta esta aqui",

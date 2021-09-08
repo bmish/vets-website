@@ -15,10 +15,24 @@
     }
   },
   "chapter1": {
-    "title": "Personal Information"
+    "title": "Veteran Information",
+    "page1": {
+      "vetFirstName": "Veteran's first name",
+      "vetMiddleName": "Veteran's middle name",
+      "vetLastName": "Veteran's last name",
+      "vetSSN": "Veteran’s Social Security number or tax identification number",
+      "vetSSNWhy": "Why is this required?",
+      "vetSSNWhyExp": "We need the Veteran’s Social Security number or tax identification number to process the application when it’s submitted online, but it’s not a requirement to apply for the program.",
+      "vetSSNRequired": "Please enter a Social Security or tax identification number",
+      "vetSSNInvalid": "Please enter a valid Social Security or tax identification number",
+      "vetDOB": "Veteran’s date of birth",
+      "vetDOBMonth": "Month",
+      "vetDOBDay": "Day",
+      "vetDOBYear": "Year",
+      "vetSex": "Veteran's sex"
+    }
   },
   "pageTwo": {
-    "label": "The label is here",
-    "labelB": "This is label B"
+    "label": "The label is here"
   }
 }

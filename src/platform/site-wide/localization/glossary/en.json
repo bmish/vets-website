@@ -9,9 +9,11 @@
   "forwardButtonText": "Continue",
   "lastName": "Last Name",
   "lastNamePlaceholder": "Enter your last name",
+  "navFormHeader": "Step {{current}} of {{length}}: {{chapterName}}",
   "pleaseCompleteAll": "Please complete all the following information.",
   "prepare": "Prepare!!!!!!",
   "required": "Required",
+  "requiredInvalid": "Please provide a response",
   "reset": "reset",
   "submit": "submit"
 }

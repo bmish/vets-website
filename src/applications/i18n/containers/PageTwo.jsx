@@ -1,6 +1,6 @@
 // CustomPage.jsx
 import React from 'react';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 
 import { TextField } from '@department-of-veterans-affairs/formulate';
@@ -33,10 +33,6 @@ const PageTwo = ({
             label={t('i18n:pageTwo.label')}
             required={t('required')}
           />
-
-          {/* <TextField name="lastName" label="last name" required /> */}
-          <label htmlFor="pageTwoDataB">{t('i18n:pageTwo.labelB')}</label>
-          <Field type="text" name="pageTwoDataB" />
           {onReviewPage ? updateButton : navButtons}
         </Form>
       </Formik>

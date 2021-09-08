@@ -9,9 +9,11 @@
   "forwardButtonText": "Magpatuloy",
   "lastName": "Huling pangalan",
   "lastNamePlaceholder": "Ipasok ang iyong apelyido",
+  "navFormHeader": "Hakbang {{current}} ng {{length}}: {{chapterName}}",
   "pleaseCompleteAll": "Mangyaring kumpletuhin ang lahat ng sumusunod na impormasyon.",
   "prepare": "Maghanda ka",
   "required": "Kailangan",
+  "requiredInvalid": "Mangyaring magbigay ng isang tugon",
   "reset": "i-reset",
   "submit": "ipasa"
 }
