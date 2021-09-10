@@ -2,8 +2,6 @@
 
 import manifest from '../manifest.json';
 
-import FormTitleCustom from '../components/FormTitleCustom';
-
 import IntroductionPage from '../containers/IntroductionPage';
 import ConfirmationPage from '../containers/ConfirmationPage';
 
@@ -40,7 +38,8 @@ const formConfig = {
     noAuth:
       'Please sign in again to continue your application for i18n form poc app.',
   },
-  title: FormTitleCustom,
+  title: { key: 'i18n:title', fallback: 'FALLBACK TITLE' },
+  subTitle: { key: 'i18n:subTitle', fallback: 'Fallback subtitle' },
   defaultDefinitions: {},
   chapters: {
     chapter1: {

@@ -1,0 +1,37 @@
+{
+  "title": "Mag-apply para sa Programa ng Komprehensibong Tulong para sa Mga Nag-aalaga ng Pamilya",
+  "introductionPage": {
+    "mainTitle": "Mag-apply para sa Programa ng Komprehensibong Tulong para sa Mga Nag-aalaga ng Pamilya",
+    "equalToForm": "Katumbas ng Form ng VA 10-10CG (Application para sa Mga Pakinabang ng Tagapangalaga ng Pamilya)",
+    "introText": "Kinikilala namin ang mahalagang papel ng mga tagapag-alaga ng pamilya sa pagsuporta sa kalusugan at kalusugan ng mga Beterano.",
+    "start": "Simulan ang iyong aplikasyon",
+    "stepsHeading": "Sundin ang mga hakbang na ito upang makapagsimula:",
+    "step1": {
+      "toFillOutThisApplication": "Upang punan ang application na ito, kakailanganin mo ang iyong:",
+      "socialSecurityNumber": "Numero ng Social Security (kinakailangan)",
+      "whatIfINeedHelp": "Paano kung kailangan ko ng tulong sa pagpunan ng aking aplikasyon?",
+      "anAccreditedRepresentative": "Ang isang kinikilalang kinatawan, tulad ng isang Veterans Service Officer (VSO), ay maaaring makatulong sa iyo na punan ang iyong paghahabol.",
+      "getHelpFiling": "Humingi ng tulong sa pag-file ng iyong claim"
+    }
+  },
+  "veteranChapter": {
+    "title": "Impormasyon ng Beterano",
+    "vetFirstName": "Unang pangalan ng Beterano",
+    "vetMiddleName": "Panggitnang pangalan ng Beterano",
+    "vetLastName": "Apelyido ng beterano",
+    "vetSSN": "Ang numero ng Social Security ng beterano o numero ng pagkilala sa buwis",
+    "vetSSNWhy": "Bakit kailangan ito?",
+    "vetSSNWhyExp": "Kailangan namin ang numero ng Social Security ng Beterano o numero ng pagkakakilanlan ng buwis upang maproseso ang aplikasyon kapag naisumite ito online, ngunit hindi ito kinakailangan na mag-apply para sa programa.",
+    "vetSSNRequired": "Mangyaring maglagay ng isang numero ng Social Security o pagkilala sa buwis",
+    "vetSSNInvalid": "Mangyaring maglagay ng wastong numero ng Social Security o pagkakakilanlan sa buwis",
+    "vetDOB": "Petsa ng kapanganakan ng Beterano",
+    "vetDOBMonth": "Buwan",
+    "vetDOBDay": "Araw",
+    "vetDOBYear": "Taon",
+    "vetSex": "Kasarian ng beterano"
+  },
+  "pageTwo": {
+    "label": "The label is here",
+    "labelB": "tagalog labelB"
+  }
+}

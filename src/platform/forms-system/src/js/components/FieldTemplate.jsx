@@ -2,6 +2,9 @@ import React from 'react';
 import _ from 'lodash/fp'; // eslint-disable-line no-restricted-imports
 import classNames from 'classnames';
 import { isReactComponent } from '../../../../utilities/ui';
+import { Translation } from 'react-i18next';
+// import { useSelector } from 'react-redux';
+import useLegacyTranslation from '../utilities/localization';
 // import environment from 'platform/utilities/environment';
 
 /*
@@ -20,15 +23,29 @@ export default function FieldTemplate(props) {
     uiSchema,
   } = props;
 
+  // const namespace = useSelector(state => state.form?.namespace || null);
+  // console.log({ namespace });
+  // console.log({ fieldTemplateProps: rest });
+
   const isTouched =
     formContext.touched[id] ||
     Object.keys(formContext.touched).some(touched => id.startsWith(touched));
   const hasErrors =
     (formContext.submitted || isTouched) && rawErrors && rawErrors.length;
-  const requiredSpan = required ? (
-    <span className="schemaform-required-span">(*Required)</span>
-  ) : null;
-  const label = uiSchema['ui:title'] || props.label || '';
+
+  const requiredSpan = required
+    ? (() => {
+        const requiredText = <Translation>{t => t('required')}</Translation>;
+        return (
+          <span className="schemaform-required-span">
+            (*
+            {requiredText})
+          </span>
+        );
+      })()
+    : null;
+
+  const label = useLegacyTranslation(uiSchema['ui:title']) || props.label || '';
   const isDateField = uiSchema['ui:widget'] === 'date';
   const showFieldLabel =
     uiSchema['ui:options'] && uiSchema['ui:options'].showFieldLabel;

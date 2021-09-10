@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import _ from 'lodash/fp'; // eslint-disable-line no-restricted-imports
+import useLegacyTranslation from '../utilities/localization';
 import { useTranslation } from 'react-i18next';
 
 import SegmentedProgressBar from '@department-of-veterans-affairs/component-library/SegmentedProgressBar';
@@ -16,6 +17,8 @@ import PropTypes from 'prop-types';
 import { REVIEW_APP_DEFAULT_MESSAGE } from '../constants';
 
 export default function FormNav(props) {
+  const { t } = useTranslation();
+
   const {
     formConfig,
     currentPath,
@@ -23,8 +26,6 @@ export default function FormNav(props) {
     isLoggedIn,
     inProgressFormId,
   } = props;
-
-  const { t } = useTranslation();
 
   const [index, setIndex] = useState(0);
 
@@ -74,7 +75,8 @@ export default function FormNav(props) {
     );
   }
 
-  const translatedChapterName = t(`${formConfig.namespace}:${chapterName}`);
+  const translatedChapterName = useLegacyTranslation(chapterName);
+  // console.log({ translatedChapterName });
   const stepText = t('navFormHeader', {
     current,
     length: chapters.length,

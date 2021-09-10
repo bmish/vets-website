@@ -633,6 +633,7 @@ export function createInitialState(formConfig) {
       hasAttemptedSubmit: false,
     },
     formId: formConfig.formId,
+    namespace: formConfig?.namespace || null,
     loadedData: {
       formData: {},
       metadata: {},

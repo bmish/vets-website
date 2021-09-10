@@ -7,10 +7,12 @@ import { createUSAStateLabels } from 'platform/forms-system/src/js/helpers';
 import { states } from 'platform/forms/address';
 import { validateSSNIsUnique } from 'applications/caregivers/helpers';
 import { VeteranSSNInfo } from 'applications/caregivers/components/AdditionalInfo';
+// import { primaryInputLabel, secondaryOneInputLabel, secondaryTwoInputLabel } from './'
 
 const stateLabels = createUSAStateLabels(states);
 
 export const emailUI = label => email(`${label}  email address`);
+
 export const dateOfBirthUI = label =>
   currentOrPastDateUI(`${label}  date of birth`);
 
@@ -32,23 +34,39 @@ export const genderUI = label => ({
   'ui:options': { labels: { F: 'Female', M: 'Male' } },
 });
 
-export const fullNameUI = label => ({
-  first: {
-    'ui:title': `${label}  first name`,
-    'ui:errorMessages': {
-      required: `Please enter ${label}  first name`,
+// const deriveKeyPrefix = label => {
+//   if (label === primaryInputLabel) return 'primary';
+//   if (label === secondaryOneInputLabel) return 'secondaryOne';
+//   if (label === secondaryTwoInputLabel) return 'secondaryTwo';
+//   if (label === 'Veteran\u2019s') return 'vet';
+//   return '';
+// };
+
+export const fullNameUI = label => {
+  // const pathPrefix = deriveKeyPrefix(label);
+
+  // console.log({ pathPrefix });
+  return {
+    first: {
+      'ui:title': {
+        key: `caregivers:veteranChapter`,
+        fallback: `${label}  first name`,
+      },
+      'ui:errorMessages': {
+        required: `Please enter ${label}  first name`,
+      },
     },
-  },
-  last: {
-    'ui:title': `${label}  last name`,
-    'ui:errorMessages': {
-      required: `Please enter ${label}  last name`,
+    last: {
+      'ui:title': `${label}  last name`,
+      'ui:errorMessages': {
+        required: `Please enter ${label}  last name`,
+      },
     },
-  },
-  middle: {
-    'ui:title': `${label}  middle name`,
-  },
-});
+    middle: {
+      'ui:title': `${label}  middle name`,
+    },
+  };
+};
 
 export const ssnUI = label => ({
   ...platformSsnUI,

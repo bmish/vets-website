@@ -1,5 +1,6 @@
 import 'platform/polyfills';
 import './sass/caregivers.scss';
+import './languages';
 
 import startApp from 'platform/startup';
 

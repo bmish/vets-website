@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Translation } from 'react-i18next';
 
 import AdditionalInfo from '@department-of-veterans-affairs/component-library/AdditionalInfo';
 
@@ -10,27 +11,38 @@ import {
 import { links } from 'applications/caregivers/definitions/content';
 import { arrayToSentenceString } from '../../helpers';
 
-export const VeteranSSNInfo = () => (
-  <div className="vads-u-margin-y--1p5">
-    <AdditionalInfo triggerText="Why is this required?">
-      We need the Veteran’s Social Security number or tax identification number
-      to process the application when it’s submitted online, but it’s not a
-      requirement to apply for the program.
-    </AdditionalInfo>
-  </div>
-);
+export const VeteranSSNInfo = () => {
+  const triggerText = (
+    <Translation>{t => t('caregivers:veteranChapter.vetSSNWhy')}</Translation>
+  );
 
-export const VetInfo = ({ pageTitle, headerInfo }) => (
-  <>
-    {pageTitle && <h3 className="vads-u-font-size--h4">{pageTitle}</h3>}
+  const triggerBody = (
+    <Translation>
+      {t => t('caregivers:veteranChapter.vetSSNWhyExp')}
+    </Translation>
+  );
 
-    {headerInfo && (
-      <p className="vads-u-margin-top--2">
-        Please complete all the following information.
-      </p>
-    )}
-  </>
-);
+  return (
+    <div className="vads-u-margin-y--1p5">
+      <AdditionalInfo triggerText={triggerText}>{triggerBody}</AdditionalInfo>
+    </div>
+  );
+};
+
+export const VetInfo = ({ pageTitle, headerInfo }) => {
+  const pleaseComplete = (
+    <Translation>
+      {t => <p className="vads-u-margin-top--2">{t('pleaseCompleteAll')}</p>}
+    </Translation>
+  );
+  return (
+    <>
+      {pageTitle && <h3 className="vads-u-font-size--h4">{pageTitle}</h3>}
+
+      {headerInfo && pleaseComplete}
+    </>
+  );
+};
 
 VetInfo.propTypes = {
   pageTitle: PropTypes.string,

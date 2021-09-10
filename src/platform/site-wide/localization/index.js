@@ -29,7 +29,6 @@ i18n
   .use(i18nextPlugin)
   .init({
     resources,
-    fallbackLng: 'en',
     defaultNS: 'glossary',
     debug: true,
     interpolation: {

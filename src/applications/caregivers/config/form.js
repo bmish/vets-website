@@ -1,5 +1,6 @@
 import ConfirmationPage from 'applications/caregivers/containers/ConfirmationPage';
 import environment from 'platform/utilities/environment';
+import { fixNamespacePrefix } from 'platform/forms-system/src/js/utilities/localization';
 import fullSchema from 'vets-json-schema/dist/10-10CG-schema.json';
 import IntroductionPage from 'applications/caregivers/containers/IntroductionPage';
 import NeedHelpFooter from 'applications/caregivers/components/NeedHelpFooter';
@@ -57,6 +58,8 @@ const {
   signature,
 } = fullSchema.definitions;
 
+const getKey = fixNamespacePrefix('caregivers:');
+
 /* Chapters
  * 1 - Vet/Service Member (required)
  * 2 - Primary Family Caregiver
@@ -64,6 +67,7 @@ const {
  * (One caregiver is always required, at least one primary, or one secondary - minimal)
  */
 const formConfig = {
+  namespace: 'caregiver',
   rootUrl: manifest.rootUrl,
   urlPrefix: '/',
   submitUrl: `${environment.API_URL}/v0/caregivers_assistance_claims`,
@@ -88,8 +92,10 @@ const formConfig = {
   downtime: {
     dependencies: [externalServices.mvi, externalServices.carma],
   },
-  title:
-    'Apply for the Program of Comprehensive Assistance for Family Caregivers',
+  title: {
+    key: getKey('title'),
+    fallback: 'Fallback',
+  },
   subTitle: 'Form 10-10CG',
   defaultDefinitions: {
     fullName,
@@ -106,7 +112,10 @@ const formConfig = {
   },
   chapters: {
     veteranChapter: {
-      title: 'Veteran information',
+      title: {
+        key: getKey('veteranChapter.title'),
+        fallback: 'Veteran information',
+      },
       pages: {
         veteranInfoOne: {
           path: 'vet-1',
@@ -228,7 +237,7 @@ const formConfig = {
   },
 };
 
-/* TODO Need to change editModeOnReviewPage for document upload to true 
+/* TODO Need to change editModeOnReviewPage for document upload to true
 when platform bug is fixed and upload button appears with this feature enabled */
 
 export default formConfig;

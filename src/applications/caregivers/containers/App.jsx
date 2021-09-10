@@ -6,7 +6,9 @@ import LoadingIndicator from '@department-of-veterans-affairs/component-library/
 
 import { toggleValues } from 'platform/site-wide/feature-toggles/selectors';
 
+import LanguageSelector from 'platform/forms-system/src/js/components/LanguageSelector';
 import RoutedSavableApp from 'platform/forms/save-in-progress/RoutedSavableApp';
+
 import formConfig from '../config/form';
 import recordEvent from 'platform/monitoring/record-event';
 
@@ -35,9 +37,12 @@ const App = ({ loading, location, children }) => {
   }
 
   return (
-    <RoutedSavableApp formConfig={formConfig} currentLocation={location}>
-      {children}
-    </RoutedSavableApp>
+    <div>
+      <LanguageSelector />
+      <RoutedSavableApp formConfig={formConfig} currentLocation={location}>
+        {children}
+      </RoutedSavableApp>
+    </div>
   );
 };
 
