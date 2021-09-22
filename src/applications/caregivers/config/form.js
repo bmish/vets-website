@@ -58,7 +58,8 @@ const {
   signature,
 } = fullSchema.definitions;
 
-const getKey = fixNamespacePrefix('caregivers:');
+const namespace = 'caregivers';
+const getKey = fixNamespacePrefix(namespace);
 
 /* Chapters
  * 1 - Vet/Service Member (required)
@@ -67,7 +68,7 @@ const getKey = fixNamespacePrefix('caregivers:');
  * (One caregiver is always required, at least one primary, or one secondary - minimal)
  */
 const formConfig = {
-  namespace: 'caregiver',
+  namespace,
   rootUrl: manifest.rootUrl,
   urlPrefix: '/',
   submitUrl: `${environment.API_URL}/v0/caregivers_assistance_claims`,
