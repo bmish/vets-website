@@ -23,7 +23,7 @@ describe('COVID-19 Vaccination Preparation Form', () => {
         .first()
         .type('{shift}');
       cy.get('div').contains(
-        'Contacting Veterans who we know plan to get a vaccine helps us do the most good with our limited supply.',
+        'Contacting Vetrans who we know plan to get a vaccine helps us do the most good with our limited supply.',
       );
 
       cy.get('va-accordion-item')
@@ -57,7 +57,7 @@ describe('COVID-19 Vaccination Preparation Form', () => {
       );
       cy.axeCheck();
 
-      cy.get('.usa-button').contains('Sign in');
+      cy.get('.usa-button').contains('Signn in');
 
       cy.findByText('Continue without signing in', { selector: 'a' }).click();
 
