@@ -6,7 +6,8 @@ import SaveInProgressIntro from 'platform/forms/save-in-progress/SaveInProgressI
 
 import HowToApplyPost911GiBill from '../components/HowToApplyPost911GiBill';
 import { connect } from 'react-redux';
-import { fetchUser } from '../selectors/userDispatch';
+// import { fetchUser } from '../selectors/userDispatch';
+// import { fetchContactInfo } from '../selectors/contactInfoDispatch';
 
 class IntroductionPage extends React.Component {
   componentDidMount() {
@@ -110,8 +111,38 @@ class IntroductionPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: fetchUser(state),
-});
+const mapStateToProps = state => {
+  const fullName = state.user.profile.userFullName || {};
+  // const contactInfo = fetchContactInfo(state);
+  return {
+    data: {
+      data: state.form?.data,
+      'view:fullName': { fullName: { fullName } },
+      // formData: {
+      //   'view:fullName': { fullName: { first: 'Dennis' } },
+      //   fullName: { first: 'DENNIS' },
+      //   first: 'dennis',
+      //   dateOfBirth: '1988-07-31',
+      // },
+      fullName: { first: 'DENNIS K' },
+      first: 'dennis k',
+      dateOfBirth: '1988-07-01',
+      // fullFormData: state.form.data || {},
+      fullFormData: {
+        'view:fullName': { fullName: { first: 'DK 1' } },
+        fullName: { first: 'DK 2' },
+        first: 'DK 3',
+        dateOfBirth: '1988-07-02',
+      },
+      // formData: state.form?.data || {},
+      formData: {
+        'view:fullName': { fullName: { first: 'dk' } },
+        fullName: { first: 'dk 2' },
+        first: 'dk 3',
+        dateOfBirth: '1988-07-03',
+      },
+    },
+  };
+};
 
 export default connect(mapStateToProps)(IntroductionPage);

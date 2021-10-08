@@ -337,7 +337,7 @@ const formConfig = {
       'Please sign in again to continue your application for my education benefits.',
   },
   title: 'Apply for VA education benefits',
-  subTitle: 'Form 22-1990',
+  subTitle: 'Equal to VA Form 22-1990 (Application for VA Education Benefits)',
   defaultDefinitions: {
     fullName,
     // ssn,
@@ -451,17 +451,17 @@ const formConfig = {
               [formFields.dateOfBirth]: date,
             },
           },
-          initialData: {
-            'view:fullName': {
-              fullName: {
-                first: 'Hector',
-                middle: 'Oliver',
-                last: 'Stanley',
-                suffix: 'Jr.',
-              },
-            },
-            dateOfBirth: '1992-07-23',
-          },
+          // initialData: {
+          //   'view:fullName': {
+          //     fullName: {
+          //       first: 'Hector',
+          //       middle: 'Oliver',
+          //       last: 'Stanley',
+          //       suffix: 'Jr.',
+          //     },
+          //   },
+          //   dateOfBirth: '1992-07-23',
+          // },
         },
       },
     },
