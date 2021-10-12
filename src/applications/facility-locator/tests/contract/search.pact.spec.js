@@ -221,7 +221,7 @@ const dispatch = sinon.stub();
 // The pact that hasn’t been verified yet
 
 contractTest('Facility Locator', 'VA.gov API', mockApi => {
-  describe.skip('GET /v1/facilities/ccp', () => {
+  describe('GET /v1/facilities/ccp', () => {
     context('facilities: ccp data exists', () => {
       it('responds appropriately', async () => {
         await mockApi().addInteraction(ccpInteraction);
@@ -230,7 +230,7 @@ contractTest('Facility Locator', 'VA.gov API', mockApi => {
     });
   });
 
-  describe.skip('GET /v1/facilities/ccp/specialties', () => {
+  describe('GET /v1/facilities/ccp/specialties', () => {
     context('facilities: ccp specialties data exists', () => {
       it('responds appropriately', async () => {
         await mockApi().addInteraction(ccpSpecialtiesInteraction);
@@ -239,7 +239,7 @@ contractTest('Facility Locator', 'VA.gov API', mockApi => {
     });
   });
 
-  describe.skip('GET /v1/facilities/va', () => {
+  describe('GET /v1/facilities/va', () => {
     context('facilities: va data exists', () => {
       it('responds appropriately', async () => {
         await mockApi().addInteraction(vaInteraction);
@@ -255,7 +255,7 @@ contractTest('Facility Locator', 'VA.gov API', mockApi => {
     });
   });
 
-  describe.skip('GET /v1/facilities/va/:id', () => {
+  describe('GET /v1/facilities/va/:id', () => {
     context('facilities: va data exists', () => {
       it('responds appropriately', async () => {
         await mockApi().addInteraction(vaDetailInteraction);
