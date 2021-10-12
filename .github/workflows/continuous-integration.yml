@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 jobs:
-  single-app-build-selection: 
+  single-app-build: 
     name: Select Apps for Single App build
     runs-on: ubuntu-latest
     steps: 
@@ -74,6 +74,7 @@ jobs:
   build:
     name: Build
     runs-on: self-hosted
+    needs: [single-app-build]
 
     env:
       NODE_EXTRA_CA_CERTS: /etc/ssl/certs/VA-Internal-S2-RCA1-v1.cer.pem
@@ -123,7 +124,12 @@ jobs:
           YARN_CACHE_FOLDER: .cache/yarn
 
       - name: Build
-        run: yarn build --verbose --buildtype=${{ matrix.buildtype }}
+        run: |
+          if [[ ${{ needs.single-app-build.outputs.SINGLE_APP_BUILD }} ]]; then
+              yarn build --verbose --buildtype=${{ matrix.buildtype }} --entry=${{ needs.single-app-build.outputs.ENTRY_NAMES }}
+          else
+              yarn build --verbose --buildtype=${{ matrix.buildtype }}
+          fi
         timeout-minutes: 30
 
       # ----------------------------
