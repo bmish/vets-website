@@ -19,6 +19,9 @@ jobs:
   single-app-build:
     name: Select Apps for Single App build
     runs-on: ubuntu-latest
+    outputs:
+      single_app_build: ${{ steps.single-app-build.outputs.single_app_build }}
+
     steps: 
       - name: Checkout
         uses: actions/checkout@v2
@@ -72,8 +75,8 @@ jobs:
           CHANGED_FILE_PATHS: ${{ steps.changed-files.outputs.all_changed_files }}
 
       - name: Set output of SINGLE_APP_BUILD
-        id: containers
-        run: echo ::set-output name=SINGLE_APP_BUILD::$SINGLE_APP_BUILD
+        id: single-app-build
+        run: echo ::set-output name=single_app_build::$SINGLE_APP_BUILD
 
   build:
     name: Build
@@ -128,12 +131,12 @@ jobs:
           YARN_CACHE_FOLDER: .cache/yarn
 
       - name: Build only changed apps
-        if: ${{ needs.single-app-build.outputs.SINGLE_APP_BUILD }}
+        if: ${{ needs.single-app-build.outputs.single_app_build }}
         run: yarn build --verbose --buildtype=${{ matrix.buildtype }} --entry=${{ needs.single-app-build.outputs.ENTRY_NAMES }}
         timeout-minutes: 30
 
       - name: Build 
-        if: ${{ !needs.single-app-build.outputs.SINGLE_APP_BUILD }}
+        if: ${{ !needs.single-app-build.outputs.single_app_build }}
         run: yarn build --verbose --buildtype=${{ matrix.buildtype }}
         timeout-minutes: 30
 
