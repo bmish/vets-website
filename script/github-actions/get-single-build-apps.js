@@ -5,6 +5,7 @@ const core = require('@actions/core');
 
 // Returns the entryName of the app that the given file belongs to
 const getEntryName = filePath => {
+  console.log(filePath);
   const root = path.join(__dirname, '../..');
   const appDirectory = filePath.split('/')[2];
 
