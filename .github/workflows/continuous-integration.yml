@@ -148,7 +148,7 @@ jobs:
       - name: Build 
         run: |
           if [[ ${{ needs.single-app-build.outputs.single_app_build }} ]]; then
-              yarn build --verbose --buildtype=${{ matrix.buildtype }} --entry=${{ needs.single-app-build.outputs.ENTRY_NAMES }}
+              yarn build --verbose --buildtype=${{ matrix.buildtype }} --entry=${{ needs.single-app-build.outputs.entry_names }}
           else
               yarn build --verbose --buildtype=${{ matrix.buildtype }}
           fi

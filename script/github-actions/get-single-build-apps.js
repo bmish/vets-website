@@ -33,7 +33,7 @@ const getEntryName = filePath => {
 
 const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ');
 const singleAppBuild = true;
-const entryNames = '';
+let entryNames = '';
 
 changedFiles.forEach(file => {
   if (!file.startsWith('src/applications')) {
@@ -41,8 +41,8 @@ changedFiles.forEach(file => {
     // core.ExitCode(0);
   } else {
     const entryName = getEntryName(file);
-    console.log(entryName);
-    entryNames.concat(`,${entryName}`);
+    entryNames += `${entryName},`;
+
     console.log(entryNames);
   }
 });
