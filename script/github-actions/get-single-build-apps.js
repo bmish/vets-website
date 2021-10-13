@@ -5,9 +5,11 @@ const core = require('@actions/core');
 
 // Returns the entryName of the app that the given file belongs to
 const getEntryName = filePath => {
-  console.log(filePath);
   const root = path.join(__dirname, '../..');
   const appDirectory = filePath.split('/')[2];
+
+  console.log(filePath);
+  console.log(root);
 
   const manifestFile = find
     .fileSync(
@@ -19,6 +21,7 @@ const getEntryName = filePath => {
       return require(file);
     })[0];
 
+  console.log(manifestFile);
   return manifestFile.entryName;
 };
 
