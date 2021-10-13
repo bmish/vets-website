@@ -3,13 +3,18 @@ const find = require('find');
 const path = require('path');
 const core = require('@actions/core');
 
-// Returns the entryName of the app that the given file belongs to
+/**
+ * Takes a relative path and returns the entryName of
+ * the app that the given path belongs to
+ *
+ * @param {*} filePath
+ * @returns
+ */
 const getEntryName = filePath => {
   const root = path.join(__dirname, '../..');
   const appDirectory = filePath.split('/')[2];
 
   console.log(filePath);
-  console.log(root);
 
   const manifestFile = find
     .fileSync(
@@ -24,12 +29,6 @@ const getEntryName = filePath => {
   console.log(manifestFile);
   return manifestFile.entryName;
 };
-
-// console.log(
-//   getEntryName(
-//     'src/applications/vaos/appointment-list/components/AppointmentsPageV2/AppointmentListItem.jsx',
-//   ),
-// );
 
 const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ');
 const singleAppBuild = true;
@@ -56,6 +55,3 @@ console.log(appFolders);
 core.exportVariable('SINGLE_APP_BUILD', singleAppBuild);
 core.exportVariable('ENTRY_NAMES', entryNames);
 core.exportVariable('APP_FOLDERS', appFolders);
-
-// console.log(changedFiles);
-// console.log(entryNames);

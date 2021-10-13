@@ -140,16 +140,6 @@ jobs:
         env:
           YARN_CACHE_FOLDER: .cache/yarn
 
-      # - name: Build only changed apps
-      #   if: ${{ needs.single-app-build.outputs.single_app_build }}
-      #   run: yarn build --verbose --buildtype=${{ matrix.buildtype }} --entry=${{ needs.single-app-build.outputs.ENTRY_NAMES }}
-      #   timeout-minutes: 30
-
-      # - name: Build 
-      #   if: ${{ !needs.single-app-build.outputs.single_app_build }}
-      #   run: yarn build --verbose --buildtype=${{ matrix.buildtype }}
-      #   timeout-minutes: 30
-
       - name: Build 
         run: |
           if [[ ${{ needs.single-app-build.outputs.single_app_build }} ]]; then
@@ -277,10 +267,9 @@ jobs:
         run: mkdir -p test-results
 
       - name: Run unit tests
-        # run: yarn test:unit --coverage
         run: |
           if [[ ${{ needs.single-app-build.outputs.single_app_build }} ]]; then
-              yarn test:unit src/applications/${{ needs.single-app-build.outputs.app_folders }}/**/*.unit.spec.js* --coverage
+              yarn test:unit src/applications/'${{ needs.single-app-build.outputs.app_folders }}'/**/*.unit.spec.js* --coverage
           else
               yarn test:unit --coverage
           fi
