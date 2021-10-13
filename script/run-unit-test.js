@@ -2,6 +2,7 @@
 const printUnitTestHelp = require('./run-unit-test-help.js');
 const commandLineArgs = require('command-line-args');
 const { runCommand } = require('./utils');
+const chalk = require('chalk');
 const glob = require('glob');
 
 // For usage instructions see https://github.com/department-of-veterans-affairs/vets-website#unit-tests
@@ -22,6 +23,7 @@ const COMMAND_LINE_OPTIONS_DEFINITIONS = [
     multiple: true,
     defaultValue: [defaultPath],
   },
+  { name: 'watch', alias: 'w', type: Boolean, defaultValue: false },
 ];
 
 const options = commandLineArgs(COMMAND_LINE_OPTIONS_DEFINITIONS);
@@ -57,11 +59,14 @@ const mochaPath = `BABEL_ENV=test NODE_ENV=test mocha ${reporterOption}`;
 const coveragePath = `NODE_ENV=test nyc --all ${coverageInclude} --reporter=lcov --reporter=text --reporter=json-summary mocha --reporter mocha-junit-reporter --no-color --retries 5`;
 const testRunner = options.coverage ? coveragePath : mochaPath;
 const configFile = options.config ? options.config : 'config/mocha.json';
+const shouldWatch = options.watch ? '--watch' : '';
 
-runCommand(
-  `LOG_LEVEL=${options[
-    'log-level'
-  ].toLowerCase()} ${testRunner} --max-old-space-size=4096 --config ${configFile} --recursive ${options.path
-    .map(p => `'${p}'`)
-    .join(' ')}`,
-);
+if (shouldWatch) console.log(chalk.yellow('Watching for changes'));
+
+const command = `LOG_LEVEL=${options[
+  'log-level'
+].toLowerCase()} ${testRunner} --max-old-space-size=4096 --config ${configFile} --recursive ${shouldWatch} ${options.path
+  .map(p => `'${p}'`)
+  .join(' ')}`;
+
+runCommand(command);
