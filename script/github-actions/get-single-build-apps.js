@@ -41,7 +41,9 @@ changedFiles.forEach(file => {
     // core.ExitCode(0);
   } else {
     const entryName = getEntryName(file);
+    console.log(entryName);
     entryNames.concat(`,${entryName}`);
+    console.log(entryNames);
   }
 });
 
