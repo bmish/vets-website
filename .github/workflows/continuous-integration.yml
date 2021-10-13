@@ -127,14 +127,23 @@ jobs:
         env:
           YARN_CACHE_FOLDER: .cache/yarn
 
-      - name: Build
-        run: |
-          if [[ ${{ needs.single-app-build.outputs.SINGLE_APP_BUILD == true }} ]]; then
-              yarn build --verbose --buildtype=${{ matrix.buildtype }} --entry=${{ needs.single-app-build.outputs.ENTRY_NAMES }}
-          else
-              yarn build --verbose --buildtype=${{ matrix.buildtype }}
-          fi
+      - name: Build only changed apps
+        if: ${{ needs.single-app-build.outputs.SINGLE_APP_BUILD }}
+        run: yarn build --verbose --buildtype=${{ matrix.buildtype }} --entry=${{ needs.single-app-build.outputs.ENTRY_NAMES }}
         timeout-minutes: 30
+
+      - name: Build 
+        if: ${{ !needs.single-app-build.outputs.SINGLE_APP_BUILD }}
+        run: yarn build --verbose --buildtype=${{ matrix.buildtype }}
+        timeout-minutes: 30
+
+        # run: |
+        #   if [[ ${{ needs.single-app-build.outputs.SINGLE_APP_BUILD == true }} ]]; then
+        #       yarn build --verbose --buildtype=${{ matrix.buildtype }} --entry=${{ needs.single-app-build.outputs.ENTRY_NAMES }}
+        #   else
+        #       yarn build --verbose --buildtype=${{ matrix.buildtype }}
+        #   fi
+        # timeout-minutes: 30
 
       # ----------------------------
       # | Notify Slack of failures |
