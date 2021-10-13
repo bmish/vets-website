@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       single_app_build: ${{ steps.single-app-build.outputs.single_app_build }}
+      entry_names: ${{ steps.entry-names.outputs.entry_names }}
 
     steps: 
       - name: Checkout
@@ -77,6 +78,10 @@ jobs:
       - name: Set output of SINGLE_APP_BUILD
         id: single-app-build
         run: echo ::set-output name=single_app_build::$SINGLE_APP_BUILD
+
+      - name: Set output of ENTRY_NAMES
+        id: entry-names
+        run: echo ::set-output name=entry_names::$ENTRY_NAMES
 
   build:
     name: Build
