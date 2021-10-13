@@ -82,7 +82,7 @@ jobs:
 
       - name: Set output of APP_FOLDERS
         id: get-app-folders
-        run: echo ::set-output name=app_folder::$APP_FOLDERS
+        run: echo ::set-output name=app_folders::$APP_FOLDERS
 
       - name: Set output of ENTRY_NAMES
         id: entry-names
