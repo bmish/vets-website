@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       single_app_build: ${{ steps.single-app-build.outputs.single_app_build }}
+      app_folders: ${{ steps.get-app-folders.outputs.app_folders }}
       entry_names: ${{ steps.entry-names.outputs.entry_names }}
 
     steps: 
@@ -78,6 +79,10 @@ jobs:
       - name: Set output of SINGLE_APP_BUILD
         id: single-app-build
         run: echo ::set-output name=single_app_build::$SINGLE_APP_BUILD
+
+      - name: Set output of APP_FOLDERS
+        id: get-app-folders
+        run: echo ::set-output name=app_folder::$APP_FOLDERS
 
       - name: Set output of ENTRY_NAMES
         id: entry-names

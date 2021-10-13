@@ -34,6 +34,7 @@ const getEntryName = filePath => {
 const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ');
 const singleAppBuild = true;
 let entryNames = '';
+let appFolders = '';
 
 changedFiles.forEach(file => {
   if (!file.startsWith('src/applications')) {
@@ -41,14 +42,20 @@ changedFiles.forEach(file => {
     // core.ExitCode(0);
   } else {
     const entryName = getEntryName(file);
-    entryNames += `${entryName},`;
+    const appFolderName = file.split('/')[2];
 
+    entryNames += `${entryName},`;
+    appFolders += `${appFolderName}|`;
     console.log(entryNames);
   }
 });
 
+appFolders = `(${appFolders})`;
+console.log(appFolders);
+
 core.exportVariable('SINGLE_APP_BUILD', singleAppBuild);
 core.exportVariable('ENTRY_NAMES', entryNames);
+core.exportVariable('APP_FOLDERS', appFolders);
 
 // console.log(changedFiles);
 // console.log(entryNames);
