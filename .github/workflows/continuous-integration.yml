@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
 
 jobs:
-  single-app-build: 
+  single-app-build:
     name: Select Apps for Single App build
     runs-on: ubuntu-latest
     steps: 
@@ -64,12 +64,16 @@ jobs:
       - name: List changed files
         id: changed-files
         run: echo ::set-output name=all_changed_files::$(git diff --name-only origin/master...)
-      
+
       - name: Get apps for single app build
         run: node script/github-actions/get-single-build-apps.js
         env:
           IS_MASTER_BUILD: ${{ env.IS_MASTER_BUILD }}
           CHANGED_FILE_PATHS: ${{ steps.changed-files.outputs.all_changed_files }}
+
+      - name: Set output of SINGLE_APP_BUILD
+        id: containers
+        run: echo ::set-output name=SINGLE_APP_BUILD::$SINGLE_APP_BUILD
 
   build:
     name: Build
@@ -125,7 +129,7 @@ jobs:
 
       - name: Build
         run: |
-          if [[ ${{ needs.single-app-build.outputs.SINGLE_APP_BUILD }} ]]; then
+          if [[ ${{ needs.single-app-build.outputs.SINGLE_APP_BUILD == true }} ]]; then
               yarn build --verbose --buildtype=${{ matrix.buildtype }} --entry=${{ needs.single-app-build.outputs.ENTRY_NAMES }}
           else
               yarn build --verbose --buildtype=${{ matrix.buildtype }}
