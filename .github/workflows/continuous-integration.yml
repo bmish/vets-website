@@ -111,8 +111,23 @@ jobs:
       - name: Create test results folder
         run: mkdir -p test-results
 
+      - name: List changed files
+        id: changed-files
+        run: echo ::set-output name=all_changed_files::$(git diff --name-only origin/master...)
+
+      - name: List changed app folders
+        run: node script/github-actions/get-app-folders.js
+        env:
+          IS_MASTER_BUILD: ${{ env.IS_MASTER_BUILD }}
+          CHANGED_FILE_PATHS: ${{ steps.changed-files.outputs.all_changed_files }}
+
       - name: Run unit tests
-        run: yarn test:unit --coverage
+        run: |
+          if [[ ${{ env.SHOULD_TEST_APP_FOLDERS }} ]]; then
+              yarn test:unit src/applications/${{ env.APP_FOLDERS }}/**/*.unit.spec.js* --coverage
+          else
+              yarn test:unit --coverage
+          fi
         env:
           MOCHA_FILE: test-results/unit-tests.xml
 
