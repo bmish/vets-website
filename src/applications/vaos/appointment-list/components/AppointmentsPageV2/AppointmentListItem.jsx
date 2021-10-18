@@ -9,6 +9,7 @@ import { APPOINTMENT_STATUS, VIDEO_TYPES } from '../../../utils/constants';
 import { Link, useHistory } from 'react-router-dom';
 import { focusElement } from 'platform/utilities/ui';
 
+// Test running unit tests on only changed apps
 function VideoAppointmentDescription({ appointment }) {
   const isAtlas = appointment.videoData.isAtlas;
   const videoKind = appointment.videoData.kind;
