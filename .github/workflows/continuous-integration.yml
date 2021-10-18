@@ -111,6 +111,14 @@ jobs:
       - name: Create test results folder
         run: mkdir -p test-results
 
+      - name: Set IS_MASTER_BUILD
+        run: |
+          if [[ ${{ github.ref }} == 'refs/heads/master' ]]; then
+              echo "IS_MASTER_BUILD=true" >> $GITHUB_ENV
+          else
+              echo "IS_MASTER_BUILD=false" >> $GITHUB_ENV
+          fi
+
       - name: List changed files
         id: changed-files
         run: echo ::set-output name=all_changed_files::$(git diff --name-only origin/master...)
