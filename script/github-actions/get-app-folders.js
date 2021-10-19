@@ -3,7 +3,7 @@ const core = require('@actions/core');
 
 const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ');
 const shouldTestAppFolders = true;
-let appFolders = '';
+const appFolders = [];
 
 changedFiles.forEach(file => {
   if (!file.startsWith('src/applications')) {
@@ -11,7 +11,7 @@ changedFiles.forEach(file => {
     // core.ExitCode(0);
   } else {
     const appFolderName = file.split('/')[2];
-    appFolders += `${appFolderName}|`;
+    appFolders.push(appFolderName);
   }
 });
 
@@ -19,4 +19,4 @@ changedFiles.forEach(file => {
 console.log(appFolders);
 
 core.exportVariable('SHOULD_TEST_APP_FOLDERS', shouldTestAppFolders);
-core.exportVariable('APP_FOLDERS', appFolders);
+core.exportVariable('APP_FOLDERS', appFolders.join('|'));
