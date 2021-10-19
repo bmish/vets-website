@@ -134,7 +134,7 @@ jobs:
       - name: Run unit tests
         run: |
           if [[ ${{ env.SHOULD_TEST_APP_FOLDERS }} ]]; then
-              yarn test:unit src/applications/${{ env.APP_FOLDERS }}/**/*.unit.spec.js* --coverage
+              yarn test:unit {src/platform,${{ env.APP_FOLDERS }}}/**/*.unit.spec.js*
           else
               yarn test:unit --coverage
           fi

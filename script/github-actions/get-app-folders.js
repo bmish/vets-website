@@ -11,7 +11,7 @@ changedFiles.forEach(file => {
     // core.ExitCode(0);
   } else {
     const appFolderName = file.split('/')[2];
-    appFolders.push(appFolderName);
+    appFolders.push(`src/applications/${appFolderName}`);
   }
 });
 
@@ -19,4 +19,4 @@ changedFiles.forEach(file => {
 console.log(appFolders);
 
 core.exportVariable('SHOULD_TEST_APP_FOLDERS', shouldTestAppFolders);
-core.exportVariable('APP_FOLDERS', appFolders.join('|'));
+core.exportVariable('APP_FOLDERS', appFolders.join(','));
