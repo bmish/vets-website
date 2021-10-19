@@ -59,6 +59,32 @@ Currently, we are using the `v2` of the API, with `v1` behind a feature flip. Th
 
 Follow the standard directions to run the app. The API needs to be running in order to run the app locally. Currently I would use the mock api in `src/applications/check-in/api/local-mock-api` using the directions in the [README](https://github.com/department-of-veterans-affairs/vets-website/blob/master/README.md#running-a-mock-api-for-local-development). This makes development easier since creating a valid token is tedious.
 
+### Run locally for a BE developer
+
+#### Useful Commands
+
+To run locally for a BE developer, you can use the following commands
+
+| Command | Description |
+|---------|-------------|
+| yarn && yarn build:webpack --env.scaffold | Installs the dependancies and builds the app |
+| yarn watch | Runs the app in watch mode |
+
+#### Current Feature toggles to enable
+
+Be sure to have the follow toggles set correctly.
+
+- `check_in_experience_enabled`
+- `check_in_experience_multiple_appointment_support`
+- `check_in_experience_demographics_page_enabled`
+
+#### Steps to see the app
+
+1. Git pull the latest version of `vets-website`
+2. Build the front-end using the command `yarn && yarn build:webpack --env.scaffold`
+3. Run the app locally using the command `yarn watch`
+4. Go to `http://localhost:3001/health-care/appointment-check-in/?id=[SOME VALID GUID]` in your browser
+
 ### How to run with Codespaces
 
 #### Setup
