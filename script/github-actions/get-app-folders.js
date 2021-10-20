@@ -32,16 +32,23 @@ const getEntryName = filePath => {
   return manifestFile.entryName;
 };
 
+const isInAllowlistApp = file => {
+  if (
+    file.startsWith('src/applications') &&
+    allowList.allow.includes(getEntryName(file))
+  ) {
+    return true;
+  }
+  return false;
+};
+
 const getAppFolders = () => {
   const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ');
   // const shouldTestAppFolders = false;
   const appFolders = [];
 
   for (const file of changedFiles) {
-    if (
-      file.startsWith('src/applications') &&
-      allowList.allow.includes(getEntryName(file))
-    ) {
+    if (isInAllowlistApp(file)) {
       const appFolderName = file.split('/')[2];
       appFolders.push(`src/applications/${appFolderName}`);
     } else {
