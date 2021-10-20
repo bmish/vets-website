@@ -45,7 +45,7 @@ const getAppFolders = () => {
       const appFolderName = file.split('/')[2];
       appFolders.push(`src/applications/${appFolderName}`);
     } else {
-      console.log('Running full build');
+      console.log('Files outside of apps on the allowlist were changed.');
       return '';
     }
   }
