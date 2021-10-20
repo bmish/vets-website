@@ -3,11 +3,15 @@ const find = require('find');
 const path = require('path');
 const core = require('@actions/core');
 
-const allowList = require('../../config/single-app-build.json');
+const singleAppBuildConfig = require('../../config/single-app-build.json');
+
+const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ').filter(
+  filePath => filePath.startsWith('src/applications'),
+);
 
 /**
  * Takes a relative path and returns the entryName of
- * the app that the given path belongs to
+ * the app that the given path belongs to.
  *
  * @param {*} filePath
  * @returns
@@ -29,24 +33,37 @@ const getEntryName = filePath => {
   return manifestFile.entryName;
 };
 
-const isInAllowlistApp = file => {
+/**
+ * Checks if the given file is part of an app contained
+ * in the list. The list should be an array of app entryNames.
+ *
+ * @param {*} file
+ * @param {*} allowlist
+ * @returns
+ */
+const isInAllowlistApp = (file, appList) => {
   if (
     file.startsWith('src/applications') &&
-    allowList.allow.includes(getEntryName(file))
+    appList.includes(getEntryName(file))
   ) {
     return true;
   }
   return false;
 };
 
-const getAppFolders = () => {
-  const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ').filter(
-    filePath => filePath.startsWith('src/applications'),
-  );
+/**
+ * Generates a string of relative app directories based on
+ * the apps in the single app build config's allowlist.
+ *
+ * @param {*} files
+ * @param {*} config
+ * @returns
+ */
+const getAppFolders = (files, config) => {
   const appFolders = [];
 
-  for (const file of changedFiles) {
-    if (isInAllowlistApp(file)) {
+  for (const file of files) {
+    if (isInAllowlistApp(file, config.allow)) {
       const appFolderName = file.split('/')[2];
       appFolders.push(`src/applications/${appFolderName}`);
     } else {
@@ -59,4 +76,7 @@ const getAppFolders = () => {
   return appFolders.join(',');
 };
 
-core.exportVariable('APP_FOLDERS', getAppFolders());
+core.exportVariable(
+  'APP_FOLDERS',
+  getAppFolders(changedFiles, singleAppBuildConfig),
+);
