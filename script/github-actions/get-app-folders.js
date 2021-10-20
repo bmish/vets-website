@@ -13,7 +13,7 @@ const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ').filter(
  * Takes a relative path and returns the entryName of
  * the app that the given path belongs to.
  *
- * @param {*} filePath
+ * @param {String} filePath
  * @returns
  */
 const getEntryName = filePath => {
@@ -37,11 +37,11 @@ const getEntryName = filePath => {
  * Checks if the given file is part of an app contained
  * in the list. The list should be an array of app entryNames.
  *
- * @param {*} file
- * @param {*} allowlist
+ * @param {String} file
+ * @param {Array} allowlist
  * @returns
  */
-const isInAllowlistApp = (file, appList) => {
+const isInAppList = (file, appList) => {
   if (
     file.startsWith('src/applications') &&
     appList.includes(getEntryName(file))
@@ -53,17 +53,17 @@ const isInAllowlistApp = (file, appList) => {
 
 /**
  * Generates a string of relative app directories based on
- * the apps in the single app build config's allowlist.
+ * the given files and apps on the single app build config's allowlist.
  *
- * @param {*} files
- * @param {*} config
+ * @param {Array} files
+ * @param {Object} config
  * @returns
  */
 const getAppFolders = (files, config) => {
   const appFolders = [];
 
   for (const file of files) {
-    if (isInAllowlistApp(file, config.allow)) {
+    if (isInAppList(file, config.allow)) {
       const appFolderName = file.split('/')[2];
       appFolders.push(`src/applications/${appFolderName}`);
     } else {
