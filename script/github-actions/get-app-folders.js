@@ -1,22 +1,58 @@
 /* eslint-disable no-console */
+const find = require('find');
+const path = require('path');
 const core = require('@actions/core');
 
-const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ');
-const shouldTestAppFolders = true;
-const appFolders = [];
+const allowList = require('../../config/single-app-build.json');
 
-changedFiles.forEach(file => {
-  if (!file.startsWith('src/applications')) {
-    console.log('Running full build');
-    // core.ExitCode(0);
-  } else {
-    const appFolderName = file.split('/')[2];
-    appFolders.push(`src/applications/${appFolderName}`);
+/**
+ * Takes a relative path and returns the entryName of
+ * the app that the given path belongs to
+ *
+ * @param {*} filePath
+ * @returns
+ */
+const getEntryName = filePath => {
+  const root = path.join(__dirname, '../..');
+  const appDirectory = filePath.split('/')[2];
+
+  console.log(filePath);
+
+  const manifestFile = find
+    .fileSync(
+      /manifest\.(json|js)$/,
+      path.join(root, `./src/applications/${appDirectory}`),
+    )
+    .map(file => {
+      // eslint-disable-next-line import/no-dynamic-require
+      return require(file);
+    })[0];
+
+  console.log(manifestFile);
+  return manifestFile.entryName;
+};
+
+const getAppFolders = () => {
+  const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ');
+  // const shouldTestAppFolders = false;
+  const appFolders = [];
+
+  for (const file of changedFiles) {
+    if (
+      file.startsWith('src/applications') &&
+      allowList.allow.includes(getEntryName(file))
+    ) {
+      const appFolderName = file.split('/')[2];
+      appFolders.push(`src/applications/${appFolderName}`);
+    } else {
+      console.log('Running full build');
+      return '';
+    }
   }
-});
 
-// appFolders = `(${appFolders})`;
-console.log(appFolders);
+  console.log(appFolders);
+  return appFolders.join(',');
+};
 
-core.exportVariable('SHOULD_TEST_APP_FOLDERS', shouldTestAppFolders);
-core.exportVariable('APP_FOLDERS', appFolders.join(','));
+// core.exportVariable('SHOULD_TEST_APP_FOLDERS');
+core.exportVariable('APP_FOLDERS', getAppFolders());
