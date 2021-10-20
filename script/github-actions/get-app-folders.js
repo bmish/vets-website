@@ -43,7 +43,9 @@ const isInAllowlistApp = file => {
 };
 
 const getAppFolders = () => {
-  const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ');
+  const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ').filter(
+    filePath => path(filePath.startsWith('src/applications')),
+  );
   // const shouldTestAppFolders = false;
   const appFolders = [];
 
