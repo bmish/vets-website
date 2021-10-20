@@ -14,7 +14,7 @@ const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ').filter(
  * the app that the given path belongs to.
  *
  * @param {String} filePath
- * @returns
+ * @returns {String} The entryName of the app
  */
 const getEntryName = filePath => {
   const root = path.join(__dirname, '../..');
@@ -38,8 +38,8 @@ const getEntryName = filePath => {
  * in the list. The list should be an array of app entryNames.
  *
  * @param {String} file
- * @param {Array} allowlist
- * @returns
+ * @param {Array} appList
+ * @returns {Boolean} Whether or not the file is in the list
  */
 const isInAppList = (file, appList) => {
   if (
@@ -57,7 +57,7 @@ const isInAppList = (file, appList) => {
  *
  * @param {Array} files
  * @param {Object} config
- * @returns
+ * @returns {String} A list of app folders separated by commas
  */
 const getAppFolders = (files, config) => {
   const appFolders = [];
