@@ -16,8 +16,6 @@ const getEntryName = filePath => {
   const root = path.join(__dirname, '../..');
   const appDirectory = filePath.split('/')[2];
 
-  console.log(filePath);
-
   const manifestFile = find
     .fileSync(
       /manifest\.(json|js)$/,
@@ -28,7 +26,6 @@ const getEntryName = filePath => {
       return require(file);
     })[0];
 
-  console.log(manifestFile);
   return manifestFile.entryName;
 };
 
@@ -46,7 +43,6 @@ const getAppFolders = () => {
   const changedFiles = process.env.CHANGED_FILE_PATHS.split(' ').filter(
     filePath => filePath.startsWith('src/applications'),
   );
-  // const shouldTestAppFolders = false;
   const appFolders = [];
 
   for (const file of changedFiles) {
@@ -59,9 +55,8 @@ const getAppFolders = () => {
     }
   }
 
-  console.log(appFolders);
+  console.log(`Changed app folders: ${appFolders}`);
   return appFolders.join(',');
 };
 
-// core.exportVariable('SHOULD_TEST_APP_FOLDERS');
 core.exportVariable('APP_FOLDERS', getAppFolders());
