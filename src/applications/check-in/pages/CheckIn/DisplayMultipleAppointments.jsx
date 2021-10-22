@@ -1,20 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import format from 'date-fns/format';
 
+import AppointmentListItem from '../../components/AppointmentDisplay/AppointmentListItem';
+import BackButton from '../../components/BackButton';
 import BackToHome from '../../components/BackToHome';
 import Footer from '../../components/Footer';
-import BackButton from '../../components/BackButton';
-import AppointmentListItem from '../../components/AppointmentDisplay/AppointmentListItem';
+import recordEvent from 'platform/monitoring/record-event';
+import { createAnalyticsSlug } from '../../utils/analytics';
 import { sortAppointmentsByStartTime } from '../../utils/appointment';
+import { focusElement } from 'platform/utilities/ui';
 
-export default function DisplayMultipleAppointments(props) {
+const DisplayMultipleAppointments = props => {
   const {
+    appointments,
+    getMultipleAppointments,
     isDemographicsPageEnabled,
     isUpdatePageEnabled,
-    token,
-    appointments,
     router,
+    token,
   } = props;
+
+  const handleClick = e => {
+    e.preventDefault();
+
+    recordEvent({
+      event: createAnalyticsSlug('refresh-appointments-button-clicked'),
+    });
+
+    getMultipleAppointments();
+    focusElement('h1');
+  };
 
   const sortedAppointments = sortAppointmentsByStartTime(appointments);
   return (
@@ -45,8 +61,32 @@ export default function DisplayMultipleAppointments(props) {
           );
         })}
       </ol>
+      <p data-testid="update-text">
+        <strong>Latest update:</strong>{' '}
+        {format(new Date(), "MMMM d, yyyy 'at' h:mm aaaa")}
+      </p>
+      <p data-testid="refresh-link">
+        <a
+          onClick={e => handleClick(e)}
+          href="#"
+          data-testid="refresh-appointments-button"
+        >
+          Refresh
+        </a>
+      </p>
       <Footer />
       <BackToHome />
     </div>
   );
-}
+};
+
+DisplayMultipleAppointments.propTypes = {
+  appointments: PropTypes.array,
+  getMultipleAppointments: PropTypes.func,
+  isDemographicsPageEnabled: PropTypes.bool,
+  isUpdatePageEnabled: PropTypes.bool,
+  router: PropTypes.object,
+  token: PropTypes.string,
+};
+
+export default DisplayMultipleAppointments;
