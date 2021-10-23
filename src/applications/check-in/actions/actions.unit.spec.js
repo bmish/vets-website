@@ -12,6 +12,8 @@ import {
   PERMISSIONS_UPDATED,
   receivedDemographicsData,
   RECEIVED_DEMOGRAPHICS_DATA,
+  receivedNextOfKinData,
+  RECEIVED_NEXT_OF_KIN_DATA,
 } from './index';
 
 describe('check inactions', () => {
@@ -98,6 +100,19 @@ describe('check inactions', () => {
         });
         expect(action.payload).to.haveOwnProperty('demographics');
         expect(action.payload.demographics.homePhone).to.equal('555-867-5309');
+      });
+    });
+    describe('receivedNextOfKinData', () => {
+      it('should return correct action', () => {
+        const action = receivedNextOfKinData({});
+        expect(action.type).to.equal(RECEIVED_NEXT_OF_KIN_DATA);
+      });
+      it('should return correct structure', () => {
+        const action = receivedNextOfKinData({
+          relationship: 'spouse',
+        });
+        expect(action.payload).to.haveOwnProperty('nextOfKin');
+        expect(action.payload.nextOfKin.relationship).to.equal('spouse');
       });
     });
   });

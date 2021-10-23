@@ -5,6 +5,7 @@ import reducer from './index';
 import {
   receivedAppointmentDetails,
   receivedDemographicsData,
+  receivedNextOfKinData,
   tokenWasValidated,
   appointmentWAsCheckedInto,
 } from '../actions';
@@ -49,6 +50,25 @@ describe('check-in', () => {
         expect(state.demographics).haveOwnProperty('mobilePhone');
         expect(state.demographics).haveOwnProperty('workPhone');
         expect(state.demographics).haveOwnProperty('emailAddress');
+      });
+    });
+    describe('receivedNextOfKinData', () => {
+      it('should create basic structure', () => {
+        const action = receivedNextOfKinData({});
+        const state = reducer.checkInData(undefined, action);
+        expect(state).haveOwnProperty('nextOfKin');
+      });
+
+      it('should have the correct fields', () => {
+        const data = {
+          relationship: 'spouse',
+        };
+        const action = receivedNextOfKinData(data);
+        const state = reducer.checkInData(undefined, action);
+        expect(state).haveOwnProperty('nextOfKin');
+        expect(state.nextOfKin).to.be.an('object');
+
+        expect(state.nextOfKin).haveOwnProperty('relationship');
       });
     });
     describe('receivedAppointmentDetails', () => {
