@@ -8,6 +8,8 @@ For basic TestRail help/info, see VSP's [TestRail docs][vsp-testrail-docs].
 
 ## Before using this app
 
+**NOTE**: CTR & CTH are currently incompatible with [VSP's Form Tester (testForm() method)][vsp-form-tester].
+
 You only need to follow these steps once:
 
 1. Integrate your Cypress spec-file with TestRail -- you should have a TestRail test-case group/section for your spec, and within it TestRail test-cases corresponding to your spec's tests.
@@ -61,6 +63,7 @@ IF this app's not working, [open a Bug in va.gov-team GitHub repo][va-gov-team-n
 
 [npm-cy-tr-reporter]: https://www.npmjs.com/package/cy-tr-reporter
 [vsp-testrail-docs]: https://depo-platform-documentation.scrollhelp.site/developer-docs/How-to-use-TestRail.1600684126.html
+[vsp-form-tester]: https://github.com/department-of-veterans-affairs/vets-website/tree/master/src/platform/testing/e2e/cypress/support/form-tester
 [dsvavsp-testrail]: https://dsvavsp.testrail.io/
 [vsp-cypress-testrail-reporter-doc]: https://depo-platform-documentation.scrollhelp.site/developer-docs/Cypress-to-TestRail-Reporter-Plugin-Configuration.1738047581.html
 [va-gov-team-new-bug]: https://github.com/department-of-veterans-affairs/va.gov-team/issues/new?assignees=&labels=bug&template=bug-issue.md&title=
